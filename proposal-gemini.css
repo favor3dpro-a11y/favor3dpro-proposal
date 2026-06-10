@@ -388,7 +388,7 @@
   .cover-proposal{font-size:3.4em;}
   .cover-divider{width:3em;margin-bottom:.6em;}
   .cover-tagline{font-size:.48em;line-height:1.8;}
-  .cover-bottom{position:relative;bottom:auto;left:auto;width:auto;margin-top:5%;}
+  .cover-bottom{position:absolute;bottom:7%;left:7%;width:65%;z-index:3;}
   .cover-prep{font-size:.36em;}
   .cover-names{font-size:1.4em;}
   .cover-date{font-size:.38em;}

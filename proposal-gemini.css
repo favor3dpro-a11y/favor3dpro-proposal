@@ -359,7 +359,7 @@
   .panel{overflow:hidden;height:auto;min-height:unset;}
 
   /* ── COVER ── */
-  .panel-cover{height:100vh;min-height:560px;overflow:hidden;}
+  .panel-cover{height:78vh;min-height:480px;overflow:hidden;}
   .cover-photo{
     background-size:cover;
     background-repeat:no-repeat;
@@ -382,7 +382,7 @@
   .cover-logo{margin-top:0;}
   .cover-logo-name{font-size:.75em;}
   .cover-logo-sub{font-size:.42em;}
-  .cover-mid{padding:12% 0 0;}
+  .cover-mid{padding:6% 0 0;}
   .cover-eyebrow{font-size:2.2em;}
   .cover-proposal{font-size:3.4em;}
   .cover-divider{width:3em;margin-bottom:.6em;}

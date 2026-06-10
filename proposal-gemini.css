@@ -359,7 +359,7 @@
   .panel{overflow:hidden;height:auto;min-height:unset;}
 
   /* ── COVER ── */
-  .panel-cover{height:65vh;min-height:400px;overflow:hidden;}
+  .panel-cover{height:65vh;min-height:400px;overflow:hidden;position:relative;}
   .cover-photo{
     background-size:cover;
     background-repeat:no-repeat;
@@ -376,6 +376,7 @@
     );
   }
   .cover-inner{
+    box-sizing:border-box;
     width:75%;height:100%;
     padding:8% 0 8% 7%;
     justify-content:flex-start;

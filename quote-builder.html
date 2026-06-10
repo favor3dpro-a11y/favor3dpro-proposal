@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>favor3dpro — Wedding Film Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cinzel:wght@400;500&family=Great+Vibes&family=Jost:wght@200;300;400&family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="proposal-gemini.css"/>
+<style>
+:root{
+  --ivory:#FEFCF8;
+  --warm-white:#FAF6EF;
+  --cream:#F3EBE0;
+  --blush:#E8D5C4;
+  --gold:#C4923E;
+  --gold-lt:#D9B870;
+  --gold-dk:#8B6428;
+  --gold-pale:#F0E4CC;
+  --ink:#1E1610;
+  --warm:#4A3220;
+  --mid:#8A7058;
+  --light:#B89878;
+  --border:#DDD0BE;
+  --border-lt:#EDE5D8;
+  --sage:#7A8C70;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:#EDEAE4;font-family:'Jost',sans-serif;color:var(--ink);}
+
+/* ── NAV ── */
+.nav{
+  background:var(--ivory);
+  border-bottom:1px solid var(--border-lt);
+  height:68px;padding:0 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 1px 20px rgba(60,40,20,.06);
+}
+.nav-logo{font-family:'Cinzel',serif;font-size:13px;font-weight:500;letter-spacing:.32em;color:var(--gold-dk);text-transform:uppercase;}
+.nav-tag{font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:var(--light);letter-spacing:.06em;margin-top:2px;}
+.nav-tabs{display:flex;}
+.ntab{padding:9px 24px;font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--light);cursor:pointer;transition:all .2s;}
+.ntab.on{color:var(--gold-dk);border-bottom-color:var(--gold);}
+.ntab:not(.on):hover{color:var(--gold);}
+.tab{display:none;}.tab.active{display:block;}
+
+/* ════════════════ BUILD ════════════════ */
+.bwrap{max-width:1040px;margin:0 auto;padding:52px 32px;}
+.sdiv{display:flex;align-items:center;gap:18px;margin-bottom:32px;}
+.sdiv-line{flex:1;height:1px;background:linear-gradient(to right,var(--border-lt),transparent);}
+.sdiv-line.r{background:linear-gradient(to left,var(--border-lt),transparent);}
+.sdiv-mid{display:flex;flex-direction:column;align-items:center;gap:5px;}
+.sdiv-orn{font-size:10px;letter-spacing:8px;color:var(--gold-lt);}
+.sdiv-txt{font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--mid);}
+.fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-bottom:56px;}
+.flbl{font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:9px;}
+.finput{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border-lt);padding:10px 0;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink);outline:none;transition:border-color .2s;}
+.finput:focus{border-bottom-color:var(--gold);}
+.finput::placeholder{color:var(--border);font-style:italic;}
+.pkgs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:56px;}
+.pcard{background:var(--ivory);border:1px solid var(--border-lt);padding:30px 24px;cursor:pointer;position:relative;transition:all .25s;}
+.pcard.sel{border-color:var(--gold);box-shadow:0 8px 40px rgba(196,146,62,.12);}
+.pcard.sel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold-lt),var(--gold),var(--gold-lt),transparent);}
+.pcard:not(.sel):hover{box-shadow:0 4px 20px rgba(60,40,20,.07);}
+.ptag{font-family:'Cinzel',serif;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-block;border:1px solid var(--gold-pale);padding:3px 10px;margin-bottom:14px;background:rgba(217,184,112,.06);}
+.pname{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;color:var(--ink);margin-bottom:3px;line-height:1.1;}
+.psub{font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--light);margin-bottom:18px;}
+.pprice{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:var(--warm);margin-bottom:18px;display:flex;align-items:baseline;gap:5px;cursor:text;}
+.pcard.sel .pprice{color:var(--gold-dk);}
+.pprice-hint{font-family:'Jost',sans-serif;font-size:10px;font-weight:300;color:var(--border-lt);}
+.pprice-inp{background:transparent;border:none;border-bottom:1px solid var(--gold);font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:var(--gold-dk);width:140px;outline:none;}
+.pdiv2{height:1px;margin-bottom:16px;background:linear-gradient(to right,var(--border),transparent);}
+.pcard.sel .pdiv2{background:linear-gradient(to right,var(--gold-lt),transparent);}
+.pdel{font-family:'Jost',sans-serif;font-size:11.5px;font-weight:300;color:var(--mid);margin-bottom:8px;display:flex;gap:9px;line-height:1.5;}
+.pdot{color:var(--gold-lt);font-size:7px;margin-top:4px;flex-shrink:0;}
+.addons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:56px;}
+.arow{background:var(--ivory);border:1px solid var(--border-lt);padding:12px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all .15s;}
+.arow.on{border-color:var(--gold-lt);background:rgba(217,184,112,.05);}
+.arow-l{display:flex;align-items:center;gap:11px;}
+.abox{width:15px;height:15px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
+.arow.on .abox{background:var(--gold);border-color:var(--gold);}
+.achk{color:#fff;font-size:8px;font-weight:700;display:none;}
+.arow.on .achk{display:block;}
+.alabel{font-family:'Jost',sans-serif;font-size:12.5px;font-weight:300;color:var(--warm);}
+.arow.on .alabel{color:var(--ink);font-weight:400;}
+.aprice{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--mid);}
+.arow.on .aprice{color:var(--gold-dk);}
+.sumbar{background:var(--ivory);border:1px solid var(--border-lt);border-top:2px solid var(--gold);padding:28px 36px;display:flex;justify-content:space-between;align-items:center;}
+.sum-eye{font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--light);margin-bottom:5px;}
+.sum-amt{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:400;color:var(--gold-dk);line-height:1;}
+.sum-break{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--light);margin-top:4px;}
+.sumbtn{padding:14px 38px;background:var(--gold-dk);color:var(--ivory);border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;transition:all .2s;box-shadow:0 4px 20px rgba(139,100,40,.25);}
+.sumbtn:hover{background:var(--gold);}
+
+/* ════════════════ GENERATE ════════════════ */
+.gen-outer{max-width:640px;margin:0 auto;padding:68px 28px;}
+.gen-card{background:var(--ivory);border:1px solid var(--border-lt);padding:64px 56px;text-align:center;position:relative;overflow:hidden;}
+.gen-card::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(196,146,62,.08),transparent 70%);}
+.gen-orn{color:var(--gold-lt);font-size:13px;letter-spacing:9px;margin-bottom:18px;opacity:.7;}
+.gen-title{font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:var(--ink);margin-bottom:10px;}
+.gen-sub{font-family:'Jost',sans-serif;font-size:13px;font-weight:300;color:var(--mid);line-height:1.85;margin-bottom:34px;}
+.gen-btn{padding:14px 44px;background:var(--gold-dk);color:var(--ivory);border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;transition:all .2s;}
+.gen-btn:hover{background:var(--gold);}
+.gen-btn:disabled{opacity:.4;cursor:not-allowed;}
+.gen-spinner{display:inline-block;width:11px;height:11px;border:1.5px solid rgba(255,255,255,.5);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.skip-link{margin-top:16px;background:none;border:none;font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--light);cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+.gen-error{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:#A06050;margin-bottom:16px;display:none;}
+.pactions{display:flex;gap:12px;margin-top:24px;}
+.btn-g{padding:11px 28px;background:transparent;color:var(--light);border:1px solid var(--border);cursor:pointer;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.2em;text-transform:uppercase;}
+.btn-gold{padding:11px 34px;background:var(--gold-dk);color:var(--ivory);border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:7px;letter-spacing:.24em;text-transform:uppercase;box-shadow:0 4px 16px rgba(139,100,40,.22);}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div>
+    <div class="nav-logo">favor3dpro</div>
+    <div class="nav-tag">Cinematic Wedding Films · Atlanta, Georgia</div>
+  </div>
+  <div class="nav-tabs">
+    <button class="ntab on" onclick="goTab('build')">Build</button>
+    <button class="ntab" onclick="goTab('generate')">Generate</button>
+    <button class="ntab" id="qtb" style="opacity:.35;pointer-events:none" onclick="goTab('quote')">Proposal</button>
+  </div>
+</nav>
+
+<!-- ══ BUILD ══ -->
+<div id="build" class="tab active">
+  <div class="bwrap">
+    <div class="sdiv" style="margin-bottom:32px;"><div class="sdiv-line"></div><div class="sdiv-mid"><div class="sdiv-orn">✦ ✦ ✦</div><div class="sdiv-txt">Client Details</div></div><div class="sdiv-line r"></div></div>
+    <div class="fields">
+      <div><label class="flbl">Couple / Client Name</label><input class="finput" id="cN" type="text" placeholder="e.g. Jordan & Taylor" oninput="sy()"/></div>
+      <div><label class="flbl">Wedding Date</label><input class="finput" id="cD" type="date" oninput="sy()"/></div>
+      <div><label class="flbl">Venue</label><input class="finput" id="cV" type="text" placeholder="e.g. Swan House · The St. Regis" oninput="sy()"/></div>
+    </div>
+    <div class="sdiv"><div class="sdiv-line"></div><div class="sdiv-mid"><div class="sdiv-orn">✦ ✦ ✦</div><div class="sdiv-txt">Select Package</div></div><div class="sdiv-line r"></div></div>
+    <div class="pkgs" id="pw"></div>
+    <div class="sdiv"><div class="sdiv-line"></div><div class="sdiv-mid"><div class="sdiv-orn">✦ ✦ ✦</div><div class="sdiv-txt">Add-On Services</div></div><div class="sdiv-line r"></div></div>
+    <div class="addons" id="aw"></div>
+    <div class="sumbar">
+      <div><div class="sum-eye" id="sl">Investment Total — The Signature</div><div class="sum-amt" id="st">$3,800</div><div class="sum-break" id="sb">$3,800 base</div></div>
+      <button class="sumbtn" onclick="goTab('generate')">Generate Personalized Proposal &nbsp;✦</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ GENERATE ══ -->
+<div id="generate" class="tab">
+  <div class="gen-outer">
+    <div class="gen-card">
+      <div class="gen-orn">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <div class="gen-title">Craft Their Proposal</div>
+      <div class="gen-sub" id="gd">Our AI will write a warm personal letter, cinematic film experience, and graceful closing — all in your brand voice, tailored to your couple.<br><br>Takes about 10 seconds.</div>
+      <div class="gen-error" id="ge"></div>
+      <button class="gen-btn" id="gb" onclick="gen()">✦ &nbsp; Compose Personalized Copy &nbsp; ✦</button>
+      <div style="margin-top:16px;"><button class="skip-link" onclick="useDef()">Skip — use default copy</button></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ PROPOSAL — 2×2 Gemini grid ══ -->
+<div id="quote" class="tab">
+  <div class="q-outer">
+    <div class="qdoc">
+    <div class="proposal-grid">
+
+      <section class="panel panel-cover">
+        <div class="cover-photo" style="background-image:url('assets/photos/cover.png?v=34');"></div>
+        <div class="cover-scrim"></div>
+        <div class="cover-inner">
+          <div class="logo-mark">
+            <div class="logo-icon"></div>
+            <div class="logo-name">favor3dpro</div>
+          </div>
+          <div class="cover-mid">
+            <div class="cover-title-group">
+              <div class="cover-eyebrow">Wedding Film</div>
+              <span class="cover-proposal">Proposal</span>
+            </div>
+            <div class="cover-divider"></div>
+            <div class="cover-tagline">A cinematic legacy<br>of your most<br>priceless moments</div>
+          </div>
+          <div class="cover-bottom">
+            <div class="cover-prep">Prepared For</div>
+            <div class="cover-names" id="p-names">Your Names</div>
+            <div class="cover-date" id="p-date">Your Wedding Date</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-split panel-about">
+        <div class="split-text cream panel-about-left">
+          <div class="about-center">
+            <div class="about-inner">
+              <div class="sec-lbl-left"><span>About Us</span></div>
+              <h2 class="about-headline">
+                <span class="about-line">We don't just</span>
+                <span class="about-line">capture moments.</span>
+                <span class="about-accent">We preserve legacy.</span>
+              </h2>
+              <div class="about-head-rule"></div>
+              <div class="about-body" id="p-about"></div>
+            </div>
+          </div>
+          <div class="about-foot">
+            <div class="logo-mark">
+              <div class="logo-icon"></div>
+              <div class="logo-name">favor3dpro</div>
+            </div>
+          </div>
+        </div>
+        <div class="split-photo"><img src="assets/photos/hands.png" alt=""/></div>
+      </section>
+
+      <section class="panel panel-packages">
+        <div class="pkg-header">
+          <div class="sec-lbl-center"><span>Our Packages</span></div>
+          <h2 class="pkg-title">Choose the Experience</h2>
+          <div class="pkg-sub">Three levels of timeless storytelling</div>
+        </div>
+        <div class="pkg-cols" id="p-pkgs"></div>
+        <div class="pkg-foot">
+          <p>Custom collections available upon request. Travel fees may apply for locations outside of Atlanta.</p>
+        </div>
+      </section>
+
+      <section class="panel panel-split panel-testimonial">
+        <div class="split-text dark testi-left">
+          <div class="sec-lbl-left"><span>Kind Words</span></div>
+          <div class="testi-body">
+            <div class="testi-mark">&ldquo;</div>
+            <p class="testi-quote" id="p-testi"></p>
+            <div class="testi-attr" id="p-testi-attr"></div>
+          </div>
+          <div class="about-foot">
+            <div class="logo-mark">
+              <div class="logo-icon"></div>
+              <div class="logo-name">favor3dpro</div>
+            </div>
+          </div>
+        </div>
+        <div class="split-photo"><img src="assets/photos/testimonial.png" alt=""/></div>
+      </section>
+
+    </div>
+    </div>
+
+    <div class="pactions">
+      <button class="btn-g" onclick="goTab('build')">← Edit</button>
+      <button class="btn-g" onclick="goTab('generate')">↺ Regenerate</button>
+      <button class="btn-gold" onclick="window.print()">Save as PDF ✦</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+const P=[
+  {id:"sig",name:"The Signature",tag:"Our Finest Work",h:12,sh:2,pr:3800,
+   desc:"Our most immersive offering. Twelve hours of dual-camera coverage — from the quiet anticipation of getting ready to your final dance — crafted into a cinematic heirloom treasured for generations.",
+   dels:["5-min cinematic highlight film","1-min next-day social media reel","Full ceremony documentary film","2 professional videographers","Full color grade & sound design","Private online delivery gallery"],
+   turn:"6–8 weeks"},
+  {id:"col",name:"The Collection",tag:"Most Requested",h:8,sh:2,pr:2600,
+   desc:"Two perspectives, one love story. Eight hours of dual-camera artistry capturing every sacred exchange, joyful celebration, and tender glance — a film you'll return to for a lifetime.",
+   dels:["3-min cinematic highlight film","1-min next-day social media reel","2 professional videographers","Full color grade & sound design","Private online delivery gallery"],
+   turn:"6–8 weeks"},
+  {id:"sto",name:"The Story",tag:"Intimate & Intentional",h:6,sh:1,pr:1500,
+   desc:"Intimate and intentional. A dedicated filmmaker devoted entirely to your day — present, unobtrusive, and devoted to preserving the quiet moments that make your story beautifully yours.",
+   dels:["1-min cinematic social media reel","1 professional videographer","Full color grade & sound design","Private online delivery gallery"],
+   turn:"4–6 weeks"}
+];
+const A=[
+  {id:"dr",l:"Drone Aerial Footage",p:350},{id:"rw",l:"Raw Footage USB Delivery",p:200},
+  {id:"cf",l:"Full Ceremony Film (unedited)",p:250},{id:"rh",l:"Rehearsal Dinner Coverage (2 hrs)",p:400},
+  {id:"sd",l:"Same-Day Edit Reel",p:600},{id:"eh",l:"Additional Hour of Coverage",p:250},
+  {id:"ru",l:"Rush Delivery (2 Weeks)",p:300}
+];
+const T=[
+  {t:"Our wedding film is a timeless masterpiece. Every time we watch it, we are transported back to the most beautiful day of our lives.",c:"Amara & James · October 2024"},
+  {t:"We had no idea what we were getting until we pressed play. favor3dpro didn't just film our wedding — they told our love story in a way we never could have imagined.",c:"Priya & Marcus · June 2024"},
+  {t:"Every person who has seen our film asked who our videographer was. It genuinely feels like a movie. Worth every penny and then some.",c:"Lauren & DeShawn · April 2025"}
+];
+let sp="col",sa=[],pr={sig:9500,col:6500,sto:3500};
+const ti=T[Math.floor(Math.random()*T.length)];
+const f=n=>"$"+Number(n).toLocaleString("en-US");
+const fd=s=>s?new Date(s+"T00:00:00").toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}):"";
+const ex=()=>{const d=new Date();d.setDate(d.getDate()+7);return d.toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});};
+const at=()=>sa.reduce((s,id)=>{const a=A.find(x=>x.id===id);return s+(a?a.p:0);},0);
+function rPkgs(){document.getElementById("pw").innerHTML=P.map(p=>`<div class="pcard${sp===p.id?" sel":""}" onclick="pp('${p.id}')"><div class="ptag">${p.tag}</div><div class="pname">${p.name}</div><div class="psub">${p.h} hrs · ${p.sh===1?"1 Videographer":"2 Videographers"}</div><div class="pprice" id="pr-${p.id}" onclick="ep(event,'${p.id}')">${f(pr[p.id])}<span class="pprice-hint"> edit ✎</span></div><div class="pdiv2"></div>${p.dels.map(d=>`<div class="pdel"><span class="pdot">◆</span>${d}</div>`).join("")}</div>`).join("");}
+function rAO(){document.getElementById("aw").innerHTML=A.map(a=>`<div class="arow${sa.includes(a.id)?" on":""}" onclick="ta('${a.id}')"><div class="arow-l"><div class="abox"><span class="achk">✓</span></div><span class="alabel">${a.l}</span></div><span class="aprice">+${f(a.p)}</span></div>`).join("");}
+function pp(id){sp=id;rPkgs();sy();}
+function ta(id){sa=sa.includes(id)?sa.filter(x=>x!==id):[...sa,id];rAO();sy();}
+function ep(e,id){e.stopPropagation();document.getElementById("pr-"+id).innerHTML=`$<input id="pi-${id}" class="pprice-inp" value="${pr[id]}" onblur="cp('${id}')" onkeydown="if(event.key==='Enter')cp('${id}')"/>`;setTimeout(()=>{const i=document.getElementById("pi-"+id);if(i){i.focus();i.select();}},10);}
+function cp(id){const i=document.getElementById("pi-"+id);if(i){const v=parseInt(i.value.replace(/\D/g,""),10);if(!isNaN(v)&&v>0)pr[id]=v;}rPkgs();sy();}
+function sy(){
+  const p=P.find(x=>x.id===sp),ao=at(),tot=pr[sp]+ao;
+  document.getElementById("sl").textContent="Investment Total — "+p.name;
+  document.getElementById("st").textContent=f(tot);
+  document.getElementById("sb").textContent=f(pr[sp])+" base"+(sa.length>0?" + "+f(ao)+" in additions":"");
+  const nm=document.getElementById("cN").value,vn=document.getElementById("cV").value,dt=document.getElementById("cD").value;
+  let d="Our AI will compose a personalized opening letter, cinematic film experience, and elegant closing for ";
+  d+=(nm?`<strong>${nm}</strong>`:"your couple");
+  if(vn)d+=`, celebrating at <strong>${vn}</strong>`;
+  if(dt)d+=` on <strong>${fd(dt)}</strong>`;
+  d+=".<br><br>Takes about 10 seconds.";
+  document.getElementById("gd").innerHTML=d;
+}
+function goTab(id){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll(".ntab").forEach((b,i)=>{b.classList.remove("on");if((i===0&&id==="build")||(i===1&&id==="generate")||(i===2&&id==="quote"))b.classList.add("on");});
+  if(id==="quote"){const q=document.getElementById("qtb");q.style.opacity="1";q.style.pointerEvents="auto";rQ();}
+}
+function dc(){
+  const nm=document.getElementById("cN").value||"Dearest Couple",vn=document.getElementById("cV").value;
+  return{
+    sal:`Dear ${nm},`,
+    opening:`Thank you for considering favor3dpro to document one of the most meaningful days of your lives. Your wedding is not simply an event — it is a living collection of fleeting moments, whispered vows, and joyful tears that deserve to be preserved with artistry and reverence.\n\nWe are honored to present this proposal, crafted with deep care for your celebration.`,
+    exp:`From the moment we arrive${vn?" at "+vn:""}, we become quiet witnesses to your love story — present enough to capture everything, invisible enough that you forget we are there. We do not direct your story. We honor it, exactly as it unfolds.\n\nWhen your film arrives, you will not simply watch footage. You will feel the hush before your first look, the warmth of every embrace, the thunder of laughter filling the room. Every frame, every musical note, every color grade is chosen with one intention: to give you something you will return to for the rest of your lives.`,
+    closing:`We would be profoundly honored to tell your story and craft a film that becomes part of your family's legacy for generations to come.\n\nWhen you are ready to reserve your date, a signed agreement and retainer will secure our services exclusively for your celebration.`
+  };
+}
+function useDef(){window._c=dc();goTab("quote");}
+async function gen(){
+  const btn=document.getElementById("gb"),err=document.getElementById("ge");
+  err.style.display="none";btn.disabled=true;
+  btn.innerHTML='<span class="gen-spinner"></span>Composing your proposal...';
+  const nm=document.getElementById("cN").value||"our couple";
+  const dt=fd(document.getElementById("cD").value)||"their wedding day";
+  const vn=document.getElementById("cV").value||"their chosen venue";
+  const p=P.find(x=>x.id===sp),ao=at(),tot=pr[sp]+ao;
+  const al=sa.map(id=>A.find(a=>a.id===id)?.l).filter(Boolean).join(", ")||"none";
+  const prompt=`You are a luxury wedding film copywriter for "favor3dpro Wedding Films," an Atlanta-based cinematic wedding studio. Tone: romantic, warm, literary, ornate. Never clinical or transactional.
+
+Couple: ${nm}. Date: ${dt}. Venue: ${vn}.
+Package: ${p.name} — ${p.h} hrs, ${p.sh===1?"1 videographer":"2 videographers"}, includes: ${p.dels.join(", ")}. Turnaround: ${p.turn}. Add-ons: ${al}. Total: ${f(tot)}.
+
+Return ONLY valid JSON (no markdown, no backticks):
+{"sal":"Warm elegant salutation to ${nm}","opening":"2 sentences of a warm personal letter body. Reference their venue and date naturally. No salutation.","exp":"Two short paragraphs separated by \n\n. Cinematic, heirloom language. 2–3 sentences each.","closing":"2 elegant sentences inviting them to reserve their date."}`;
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:800,messages:[{role:"user",content:prompt}]})});
+    const data=await res.json();
+    const raw=data.content?.find(b=>b.type==="text")?.text||"";
+    window._c=JSON.parse(raw.replace(/```json|```/g,"").trim());
+    goTab("quote");
+  }catch(e){
+    err.textContent="Couldn't reach AI — showing elegant default copy.";
+    err.style.display="block";
+    window._c=dc();
+    goTab("quote");
+  }finally{
+    btn.disabled=false;
+    btn.innerHTML='✦ &nbsp; Compose Personalized Copy &nbsp; ✦';
+  }
+}
+const fmtTestiDate=d=>{if(!d)return"";return new Date(d+"T00:00:00").toLocaleDateString("en-US",{month:"long",year:"numeric"}).toUpperCase();};
+const GICONS={
+  clock:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  film:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14"/></svg>',
+  cam:'<svg viewBox="0 0 24 24"><path d="M4 8h4l2-3h4l2 3h4v11H4z"/><circle cx="12" cy="13" r="3"/></svg>',
+  play:'<svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>',
+  box:'<svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M12 4v16M4 8l8 4 8-4"/></svg>',
+  drone:'<svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/></svg>'
+};
+const GICN=["clock","film","box","cam","play","drone"];
+const GPKGS=[
+  {id:"sto",label:"The Essential",desc:"Perfect for intimate celebrations",featured:false,
+   feats:["3 Hours Coverage","1 Cinematic Videographer","3–5 Min Highlight Film","Private Online Gallery","4 Weeks Delivery"]},
+  {id:"col",label:"The Signature",desc:"Our most loved collection",featured:true,
+   feats:["6 Hours Coverage","2 Cinematic Videographers","7–10 Min Highlight Film","10 Min Ceremony Film","Same-Day Edit","6 Weeks Delivery"]},
+  {id:"sig",label:"The Legacy",desc:"The ultimate storytelling experience",featured:false,
+   feats:["10 Hours Coverage","2 Senior Cinematic Videographers","10–15 Min Highlight Film","Full Ceremony + Reception Film","Drone Footage","Custom Vinyl USB Keepsake","8 Weeks Delivery"]}
+];
+function rGPkgs(selected){
+  document.getElementById("p-pkgs").innerHTML=GPKGS.map(g=>`
+    <div class="pkg-col${g.featured?" featured":""}${selected===g.id?" selected":""}">
+      ${g.featured?'<div class="pkg-banner">Most Popular</div>':""}
+      <div class="pkg-col-name">${g.label}</div>
+      <div class="pkg-col-desc">${g.desc}</div>
+      <div class="pkg-feats">${g.feats.map((t,i)=>`<div class="pkg-feat">${GICONS[GICN[i%GICN.length]]}<span>${t}</span></div>`).join("")}</div>
+      <div class="pkg-price-wrap">
+        <div class="pkg-price-lbl">Investment</div>
+        <div class="pkg-price">${f(pr[g.id])}</div>
+      </div>
+    </div>`).join("");
+}
+function rQ(){
+  const nm=document.getElementById("cN").value||"Your Names";
+  const dt=document.getElementById("cD").value;
+  const vn=document.getElementById("cV").value;
+  const c=window._c||dc();
+
+  document.getElementById("p-names").textContent=nm;
+  document.getElementById("p-date").textContent=(dt?fd(dt):"June 18, 2025").toUpperCase();
+
+  const about=[c.opening,c.exp].filter(Boolean).join("\n\n");
+  document.getElementById("p-about").innerHTML=about.split("\n\n").map(t=>`<p>${t}</p>`).join("");
+
+  rGPkgs(sp);
+
+  document.getElementById("p-testi").textContent=ti.t;
+  const names=(nm||"Your Names").toUpperCase();
+  const venue=vn?vn.toUpperCase():"";
+  const dateStr=fmtTestiDate(dt);
+  const detail=[venue,dateStr].filter(Boolean).join(" | ");
+  document.getElementById("p-testi-attr").innerHTML=`<span class="name">- ${names}</span><span class="detail">${detail}</span>`;
+}
+rPkgs();rAO();sy();
+</script>
+</body>
+</html>

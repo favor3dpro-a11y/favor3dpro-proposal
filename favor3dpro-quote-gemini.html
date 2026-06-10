@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>favor3dpro — Wedding Film Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="proposal-gemini.css"/>
+<style>
+html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink);}
+.toolbar{
+  position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid #ddd;
+  padding:14px 32px;display:flex;justify-content:space-between;align-items:center;
+}
+.toolbar h1{font-family:'Playfair Display',serif;font-size:17px;font-weight:400;}
+.toolbar button{
+  padding:10px 28px;background:var(--dark);color:var(--cream);border:none;cursor:pointer;
+  font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>favor3dpro · Wedding Film Proposal</h1>
+  <button onclick="window.print()">Save as PDF</button>
+</div>
+
+<div class="doc-wrap">
+<div class="doc">
+<div class="proposal-grid">
+
+<section class="panel panel-cover">
+  <div class="cover-photo" style="background-image:url('assets/photos/cover.png?v=34');"></div>
+  <div class="cover-scrim"></div>
+  <div class="cover-inner">
+    <div class="cover-logo">
+      <div class="cover-logo-name">Favor3dpro</div>
+      <div class="cover-logo-sub">Wedding Films</div>
+    </div>
+    <div class="cover-mid">
+      <div class="cover-title-group">
+        <div class="cover-eyebrow">Wedding Film</div>
+        <span class="cover-proposal">Proposal</span>
+      </div>
+      <div class="cover-divider"></div>
+      <div class="cover-tagline">A cinematic legacy<br>of your most<br>priceless moments</div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-prep">Prepared For</div>
+    <div class="cover-names" id="p-names">Dee &amp; Kwan</div>
+    <div class="cover-date" id="p-date">November 8, 2026</div>
+    <div class="cover-venue" id="p-venue"></div>
+  </div>
+</section>
+
+<section class="panel panel-split panel-about">
+  <div class="split-text cream panel-about-left">
+    <div class="about-center">
+      <div class="about-inner">
+        <div class="sec-lbl-left"><span>About Us</span></div>
+        <h2 class="about-headline">
+          <span class="about-line">We don't just</span>
+          <span class="about-line">capture moments.</span>
+          <span class="about-accent">We preserve legacy.</span>
+        </h2>
+        <div class="about-head-rule"></div>
+        <div class="about-body" id="p-about">
+          <p>Your wedding film is more than a beautiful video. It's a timeless heirloom that tells your love story for generations to come.</p>
+          <p>We capture the glances, laughter, and vows that make your day uniquely yours. With 8 years of experience across Atlanta and beyond, every film we deliver is a personal edit crafted just for you.</p>
+        </div>
+        <p class="about-personal"><span id="p-about-names">Dee &amp; Kwan</span>, we would be honored to be part of your story.</p>
+      </div>
+    </div>
+  </div>
+  <div class="split-photo"><img src="assets/photos/hands.png" alt=""/></div>
+</section>
+
+<section class="panel panel-packages">
+  <div class="pkg-header">
+    <div class="sec-lbl-center"><span>Our Packages</span></div>
+    <h2 class="pkg-title">Choose the Experience</h2>
+    <div class="pkg-sub">Three levels of timeless storytelling — all filmed in 4K</div>
+  </div>
+  <div class="pkg-cols" id="p-pkgs"></div>
+  <div class="pkg-addons" id="p-addons" style="display:none">
+    <div class="pkg-addons-lbl">Additional Services</div>
+    <div class="pkg-addons-list" id="p-addons-list"></div>
+  </div>
+</section>
+
+<section class="panel panel-split panel-testimonial">
+  <div class="split-text dark testi-left">
+    <div class="sec-lbl-left"><span>Kind Words</span></div>
+    <div class="testi-body">
+      <div class="testi-mark">&ldquo;</div>
+      <p class="testi-quote" id="p-testi">When we watched it for the first time, we both cried. Our film is something we will cherish for the rest of our lives. Favor3dpro captured the emotion, the atmosphere, and every little detail so beautifully.</p>
+      <div class="testi-divider"></div>
+      <div class="testi-attr" id="p-testi-attr">
+        <span class="name">Jordan &amp; Taylor</span>
+      </div>
+    </div>
+    <div class="about-foot">
+      <div class="logo-mark">
+        <div class="logo-name">favor3dpro</div>
+        <div class="logo-sub">Wedding Films</div>
+      </div>
+    </div>
+  </div>
+  <div class="split-photo"><img src="assets/photos/testimonial.png" alt=""/></div>
+</section>
+
+</div>
+</div>
+</div>
+
+<script>
+const PKGS=[
+  {id:"leg",label:"The Legacy",desc:"The complete wedding film experience",featured:false,
+   feats:[
+     {title:"Full Ceremony Film",sub:"Every vow, every tear, uncut",icon:"film"},
+     {title:"Aerial Drone Footage",sub:"Breathtaking cinematic perspectives",icon:"drone"},
+     {title:"All-Day Coverage",sub:"Every moment, start to finish",icon:"clock"},
+     {title:"2 Cinematographers",sub:"Every angle, nothing missed",icon:"cam"},
+     {title:"Pre-Ceremony Film",sub:"The final moments before forever",icon:"film"},
+     {title:"6–8 Min Highlight Film",sub:"A cinematic heirloom",icon:"play"},
+     {title:"1 Min Social Media Reel",sub:"Instagram & TikTok ready, 72 hrs",icon:"share"},
+     {title:"Vow & Speech Audio",sub:"Mixed into your highlight film",icon:"mic"},
+     {title:"Private Online Gallery",sub:"Download within 30 days, yours forever",icon:"box"}
+   ],
+   price:3700},
+  {id:"sig",label:"The Signature",desc:"Our most loved collection",featured:true,
+   feats:[
+     {title:"2 Cinematographers",sub:"Every angle, nothing missed",icon:"cam"},
+     {title:"10 Hours Coverage",sub:"Morning through last dance",icon:"clock"},
+     {title:"Pre-Ceremony Film",sub:"The final moments before forever",icon:"film"},
+     {title:"4–6 Min Highlight Film",sub:"Cinematic color grade",icon:"play"},
+     {title:"1 Min Social Media Reel",sub:"Instagram & TikTok ready",icon:"share"},
+     {title:"Vow & Speech Audio",sub:"Mixed into your highlight film",icon:"mic"},
+     {title:"Private Online Gallery",sub:"Download within 30 days, yours forever",icon:"box"}
+   ],
+   price:2900},
+  {id:"ess",label:"The Essential",desc:"Your story, beautifully told",featured:false,
+   feats:[
+     {title:"1 Cinematographer",sub:"Solo cinematic coverage",icon:"cam"},
+     {title:"6-Hour Coverage",sub:"You choose when your day begins",icon:"clock"},
+     {title:"2–4 Min Highlight Film",sub:"Cinematic color grade",icon:"play"},
+     {title:"Private Online Gallery",sub:"Download within 30 days, yours forever",icon:"box"}
+   ],
+   price:2200}
+];
+const ICONS={
+  clock:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  film:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14"/></svg>',
+  cam:'<svg viewBox="0 0 24 24"><path d="M4 8h4l2-3h4l2 3h4v11H4z"/><circle cx="12" cy="13" r="3"/></svg>',
+  play:'<svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>',
+  box:'<svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M12 4v16M4 8l8 4 8-4"/></svg>',
+  drone:'<svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/></svg>',
+  mic:'<svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 19v3M9 22h6"/></svg>',
+  share:'<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>'
+};
+const f=n=>"$"+Number(n).toLocaleString("en-US");
+
+function renderPkgs(selected){
+  document.getElementById("p-pkgs").innerHTML=PKGS.map(p=>`
+    <div class="pkg-col${p.featured?" featured":""}${selected===p.id?" selected":""}">
+      ${p.featured?'<div class="pkg-banner">Most Popular</div>':""}
+      <div class="pkg-col-name">${p.label}</div>
+      <div class="pkg-col-desc">${p.desc}</div>
+      <div class="pkg-col-divider"></div>
+      <div class="pkg-feats">${p.feats.map((feat,j)=>`
+        <div class="pkg-feat">
+          ${ICONS[feat.icon]||ICONS[FEAT_ICONS[j%FEAT_ICONS.length]]}
+          <div class="pkg-feat-text">
+            <span class="pkg-feat-title">${feat.title}</span>
+            ${feat.sub?`<span class="pkg-feat-sub">${feat.sub}</span>`:""}
+          </div>
+        </div>`).join("")}</div>
+      <div class="pkg-price-wrap">
+        <div class="pkg-price-lbl">Investment</div>
+        <div class="pkg-price">${f(p.price)}</div>
+      </div>
+    </div>`).join("");
+}
+
+function initFromParams(){
+  const q=new URLSearchParams(location.search);
+  const names=q.get("names")||"Dee & Kwan";
+  document.getElementById("p-names").textContent=names;
+  document.getElementById("p-about-names").textContent=names;
+  const venue=q.get("venue")||"";
+  const venueEl=document.getElementById("p-venue");
+  if(venue){venueEl.textContent=venue;venueEl.style.display="";}
+  else{venueEl.style.display="none";}
+  const addonsRaw=q.get("addons")||"";
+  if(addonsRaw){
+    const items=addonsRaw.split("|").map(a=>{
+      const parts=a.split(":");
+      return{label:decodeURIComponent(parts[0]),price:parts[1]?parseInt(parts[1]):0};
+    });
+    const listEl=document.getElementById("p-addons-list");
+    listEl.innerHTML=items.map(i=>`<div class="pkg-addon-item"><span class="pkg-addon-name">${i.label}</span><span class="pkg-addon-price">+$${i.price.toLocaleString("en-US")}</span></div>`).join("");
+    document.getElementById("p-addons").style.display="";
+  }
+
+  document.getElementById("p-date").textContent=(q.get("date")||"November 8, 2026").toUpperCase();
+  document.getElementById("p-testi").textContent=q.get("testi")||"When we watched it for the first time, we both cried. Our film is something we will cherish for the rest of our lives. Favor3dpro captured the emotion, the atmosphere, and every little detail so beautifully.";
+  const attr=(q.get("attr")||"Jordan & Taylor").split("|");
+  document.getElementById("p-testi-attr").innerHTML=`<span class="name">${attr[0]||""}</span>`;
+  if(q.get("about")) document.getElementById("p-about").innerHTML=q.get("about").split("|").map(t=>`<p>${t}</p>`).join("");
+  if(q.get("p_leg"))PKGS[0].price=+q.get("p_leg");
+  if(q.get("p_sig"))PKGS[1].price=+q.get("p_sig");
+  if(q.get("p_ess"))PKGS[2].price=+q.get("p_ess");
+  renderPkgs(q.get("pkg")||"sig");
+}
+initFromParams();
+</script>
+</body>
+</html>

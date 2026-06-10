@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Favor3dpro — Proposal Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#F5F2E9;
+  --dark:#1A1A1A;
+  --gold:#B59A7A;
+  --gold-deep:#C5A059;
+  --ink:#2C2418;
+  --muted:#6B5F52;
+  --white:#FFFFFF;
+  --border:rgba(181,154,122,.3);
+}
+html,body{background:#E8E4DC;font-family:'Montserrat',sans-serif;color:var(--ink);min-height:100vh;}
+
+/* HEADER */
+.b-header{
+  background:var(--cream);border-bottom:1px solid var(--border);
+  padding:20px 40px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.b-logo{display:flex;flex-direction:column;gap:2px;}
+.b-logo-name{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);}
+.b-logo-sub{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.85;}
+.b-header-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:400;color:var(--muted);letter-spacing:.04em;}
+
+/* WRAP */
+.b-wrap{max-width:960px;margin:40px auto;padding:0 24px 80px;}
+
+/* SECTION */
+.b-section{background:var(--cream);border:1px solid var(--border);padding:32px 36px;margin-bottom:20px;}
+.b-section-lbl{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.b-section-lbl span{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+.b-section-lbl::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.3;}
+
+/* FIELDS */
+.b-fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
+.b-field{display:flex;flex-direction:column;gap:7px;}
+.b-field label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+.b-field input{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:400;color:var(--ink);background:var(--white);border:1px solid var(--border);padding:10px 14px;outline:none;transition:border .2s;}
+.b-field input:focus{border-color:var(--gold);}
+.b-field input::placeholder{color:rgba(107,95,82,.4);}
+
+/* PACKAGE PRICING CARDS */
+.b-pkg-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.b-pkg-card{background:var(--white);border:1.5px solid var(--border);padding:24px 20px 20px;position:relative;}
+.b-pkg-card-lbl{font-family:'Montserrat',sans-serif;font-size:7.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.b-pkg-card-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:4px;line-height:1.1;}
+.b-pkg-card-sub{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.b-pkg-price-row{display:flex;align-items:center;gap:3px;border-top:1px solid var(--border);padding-top:14px;}
+.b-pkg-price-row>span:first-child{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--gold-deep);}
+.b-price-input{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--gold-deep);border:none;border-bottom:1px dashed var(--border);background:transparent;width:90px;outline:none;padding:0 2px;-moz-appearance:textfield;}
+.b-price-input::-webkit-inner-spin-button,.b-price-input::-webkit-outer-spin-button{-webkit-appearance:none;}
+.b-price-input:focus{border-bottom-color:var(--gold);}
+.b-price-hint{font-family:'Montserrat',sans-serif;font-size:7px;font-weight:300;color:var(--muted);margin-top:6px;font-style:italic;}
+
+/* TOGGLE */
+.b-toggle-row{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--cream);border:1px solid var(--border);
+  padding:20px 36px;margin-bottom:0;cursor:pointer;
+  transition:border-color .2s;
+}
+.b-toggle-row:hover{border-color:rgba(181,154,122,.6);}
+.b-toggle-left{display:flex;flex-direction:column;gap:5px;}
+.b-toggle-title{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);}
+.b-toggle-desc{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;color:var(--muted);}
+.b-switch{position:relative;width:44px;height:24px;flex-shrink:0;}
+.b-switch input{opacity:0;width:0;height:0;}
+.b-slider{position:absolute;inset:0;background:rgba(181,154,122,.25);border-radius:24px;cursor:pointer;transition:.3s;}
+.b-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;bottom:3px;background:var(--white);border-radius:50%;transition:.3s;}
+.b-switch input:checked+.b-slider{background:var(--gold-deep);}
+.b-switch input:checked+.b-slider::before{transform:translateX(20px);}
+
+/* CUSTOMIZE PANEL */
+.b-customize{
+  background:var(--cream);border:1px solid var(--border);border-top:none;
+  padding:0 36px;max-height:0;overflow:hidden;
+  transition:max-height .4s ease, padding .4s ease;
+}
+.b-customize.open{max-height:600px;padding:28px 36px;}
+
+/* RECOMMEND RADIO */
+.b-rec-lbl{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.b-rec-options{display:flex;gap:12px;margin-bottom:28px;}
+.b-rec-option{
+  flex:1;border:1.5px solid var(--border);padding:14px 16px;
+  cursor:pointer;display:flex;align-items:center;gap:10px;
+  transition:border-color .2s;background:var(--white);
+}
+.b-rec-option:hover{border-color:rgba(181,154,122,.6);}
+.b-rec-option.selected{border-color:var(--gold-deep);}
+.b-rec-option input[type=radio]{accent-color:var(--gold-deep);}
+.b-rec-option-name{font-family:'Playfair Display',serif;font-size:14px;color:var(--ink);}
+.b-rec-option-sub{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;}
+
+/* ADD-ONS */
+.b-addons-lbl{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.b-addons-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.b-addon-row{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--border);padding:12px 16px;cursor:pointer;transition:border-color .2s;}
+.b-addon-row:hover{border-color:rgba(181,154,122,.5);}
+.b-addon-row.checked{border-color:var(--gold);}
+.b-addon-check{width:14px;height:14px;flex-shrink:0;accent-color:var(--gold-deep);cursor:pointer;}
+.b-addon-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:400;color:var(--ink);flex:1;}
+.b-addon-plus{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:400;color:var(--gold);margin-right:2px;}
+.b-addon-price-input{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;color:var(--gold-deep);border:none;border-bottom:1px dashed var(--border);background:transparent;width:50px;text-align:right;outline:none;-moz-appearance:textfield;}
+.b-addon-price-input::-webkit-inner-spin-button,.b-addon-price-input::-webkit-outer-spin-button{-webkit-appearance:none;}
+.b-addon-price-input:focus{border-bottom-color:var(--gold);}
+
+/* GENERATE */
+.b-generate{
+  width:100%;padding:18px;background:var(--dark);color:var(--cream);
+  border:none;cursor:pointer;font-family:'Montserrat',sans-serif;
+  font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+  transition:background .2s;margin-top:20px;display:block;
+}
+.b-generate:hover{background:var(--ink);}
+</style>
+</head>
+<body>
+
+<header class="b-header">
+  <div class="b-logo">
+    <div class="b-logo-name">Favor3dpro</div>
+    <div class="b-logo-sub">Wedding Films</div>
+  </div>
+  <div class="b-header-title">Proposal Builder</div>
+</header>
+
+<div class="b-wrap">
+
+  <!-- CLIENT DETAILS -->
+  <div class="b-section">
+    <div class="b-section-lbl"><span>Client Details</span></div>
+    <div class="b-fields">
+      <div class="b-field">
+        <label>Couple Names</label>
+        <input type="text" id="b-names" placeholder="e.g. Dee &amp; Kwan"/>
+      </div>
+      <div class="b-field">
+        <label>Wedding Date</label>
+        <input type="text" id="b-date" placeholder="e.g. November 8, 2026"/>
+      </div>
+      <div class="b-field">
+        <label>Venue</label>
+        <input type="text" id="b-venue" placeholder="e.g. The Ritz-Carlton, Atlanta"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- PACKAGE PRICING -->
+  <div class="b-section">
+    <div class="b-section-lbl"><span>Package Pricing</span></div>
+    <div class="b-pkg-grid">
+
+      <div class="b-pkg-card">
+        <div class="b-pkg-card-lbl">Our Finest Work</div>
+        <div class="b-pkg-card-name">The Legacy</div>
+        <div class="b-pkg-card-sub">All-Day · 2 Cinematographers</div>
+        <div class="b-pkg-price-row">
+          <span>$</span>
+          <input class="b-price-input" id="price-leg" value="3700" type="number"/>
+        </div>
+        <div class="b-price-hint">Click price to edit</div>
+      </div>
+
+      <div class="b-pkg-card">
+        <div class="b-pkg-card-lbl">Most Requested</div>
+        <div class="b-pkg-card-name">The Signature</div>
+        <div class="b-pkg-card-sub">10 Hours · 2 Cinematographers</div>
+        <div class="b-pkg-price-row">
+          <span>$</span>
+          <input class="b-price-input" id="price-sig" value="2900" type="number"/>
+        </div>
+        <div class="b-price-hint">Click price to edit</div>
+      </div>
+
+      <div class="b-pkg-card">
+        <div class="b-pkg-card-lbl">Intimate &amp; Intentional</div>
+        <div class="b-pkg-card-name">The Essential</div>
+        <div class="b-pkg-card-sub">6-Hour · 1 Cinematographer</div>
+        <div class="b-pkg-price-row">
+          <span>$</span>
+          <input class="b-price-input" id="price-ess" value="2200" type="number"/>
+        </div>
+        <div class="b-price-hint">Click price to edit</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CUSTOMIZE TOGGLE -->
+  <div class="b-toggle-row" onclick="toggleCustomize()">
+    <div class="b-toggle-left">
+      <div class="b-toggle-title">Customize for this couple</div>
+      <div class="b-toggle-desc">Highlight a recommended package and add optional services</div>
+    </div>
+    <label class="b-switch" onclick="event.stopPropagation()">
+      <input type="checkbox" id="b-toggle" onchange="toggleCustomize()"/>
+      <span class="b-slider"></span>
+    </label>
+  </div>
+
+  <!-- CUSTOMIZE PANEL (hidden by default) -->
+  <div class="b-customize" id="b-customize">
+
+    <div class="b-rec-lbl">Recommended Package</div>
+    <div class="b-rec-options">
+      <div class="b-rec-option selected" data-pkg="leg" onclick="selectRec('leg')">
+        <input type="radio" name="rec" value="leg" checked/>
+        <div>
+          <div class="b-rec-option-name">The Legacy</div>
+          <div class="b-rec-option-sub">All-Day · 2 Cinematographers</div>
+        </div>
+      </div>
+      <div class="b-rec-option" data-pkg="sig" onclick="selectRec('sig')">
+        <input type="radio" name="rec" value="sig"/>
+        <div>
+          <div class="b-rec-option-name">The Signature</div>
+          <div class="b-rec-option-sub">10 Hours · 2 Cinematographers</div>
+        </div>
+      </div>
+      <div class="b-rec-option" data-pkg="ess" onclick="selectRec('ess')">
+        <input type="radio" name="rec" value="ess"/>
+        <div>
+          <div class="b-rec-option-name">The Essential</div>
+          <div class="b-rec-option-sub">6-Hour · 1 Cinematographer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-addons-lbl">Add-On Services</div>
+    <div class="b-addons-grid">
+
+      <div class="b-addon-row" onclick="toggleAddon(this)">
+        <input class="b-addon-check" type="checkbox" onclick="event.stopPropagation()"/>
+        <span class="b-addon-label">Drone Aerial Footage</span>
+        <span class="b-addon-plus">+$</span>
+        <input class="b-addon-price-input" type="number" value="350" onclick="event.stopPropagation()"/>
+      </div>
+
+      <div class="b-addon-row" onclick="toggleAddon(this)">
+        <input class="b-addon-check" type="checkbox" onclick="event.stopPropagation()"/>
+        <span class="b-addon-label">Raw Footage USB Delivery</span>
+        <span class="b-addon-plus">+$</span>
+        <input class="b-addon-price-input" type="number" value="200" onclick="event.stopPropagation()"/>
+      </div>
+
+      <div class="b-addon-row" onclick="toggleAddon(this)">
+        <input class="b-addon-check" type="checkbox" onclick="event.stopPropagation()"/>
+        <span class="b-addon-label">Full Ceremony Film (Unedited)</span>
+        <span class="b-addon-plus">+$</span>
+        <input class="b-addon-price-input" type="number" value="250" onclick="event.stopPropagation()"/>
+      </div>
+
+      <div class="b-addon-row" onclick="toggleAddon(this)">
+        <input class="b-addon-check" type="checkbox" onclick="event.stopPropagation()"/>
+        <span class="b-addon-label">Rehearsal Dinner Coverage (2 hrs)</span>
+        <span class="b-addon-plus">+$</span>
+        <input class="b-addon-price-input" type="number" value="400" onclick="event.stopPropagation()"/>
+      </div>
+
+      <div class="b-addon-row" onclick="toggleAddon(this)">
+        <input class="b-addon-check" type="checkbox" onclick="event.stopPropagation()"/>
+        <span class="b-addon-label">Same-Day Edit Reel</span>
+        <span class="b-addon-plus">+$</span>
+        <input class="b-addon-price-input" type="number" value="600" onclick="event.stopPropagation()"/>
+      </div>
+
+      <div class="b-addon-row" onclick="toggleAddon(this)">
+        <input class="b-addon-check" type="checkbox" onclick="event.stopPropagation()"/>
+        <span class="b-addon-label">Additional Hour of Coverage</span>
+        <span class="b-addon-plus">+$</span>
+        <input class="b-addon-price-input" type="number" value="250" onclick="event.stopPropagation()"/>
+      </div>
+
+      <div class="b-addon-row" onclick="toggleAddon(this)">
+        <input class="b-addon-check" type="checkbox" onclick="event.stopPropagation()"/>
+        <span class="b-addon-label">Rush Delivery (2 Weeks)</span>
+        <span class="b-addon-plus">+$</span>
+        <input class="b-addon-price-input" type="number" value="300" onclick="event.stopPropagation()"/>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GENERATE -->
+  <button class="b-generate" onclick="generate()">Generate Proposal</button>
+
+</div>
+
+<script>
+let selectedRec = 'leg';
+
+function toggleCustomize() {
+  const cb = document.getElementById('b-toggle');
+  const panel = document.getElementById('b-customize');
+  if (event.target !== cb) cb.checked = !cb.checked;
+  panel.classList.toggle('open', cb.checked);
+}
+
+function selectRec(id) {
+  selectedRec = id;
+  document.querySelectorAll('.b-rec-option').forEach(o => o.classList.remove('selected'));
+  document.querySelector('[data-pkg="'+id+'"]').classList.add('selected');
+  document.querySelector('input[value="'+id+'"]').checked = true;
+}
+
+function toggleAddon(row) {
+  const cb = row.querySelector('.b-addon-check');
+  cb.checked = !cb.checked;
+  row.classList.toggle('checked', cb.checked);
+}
+
+function generate() {
+  const names = document.getElementById('b-names').value.trim() || 'Dee & Kwan';
+  const date  = document.getElementById('b-date').value.trim()  || 'November 8, 2026';
+  const venue = document.getElementById('b-venue').value.trim();
+  const pLeg  = document.getElementById('price-leg').value;
+  const pSig  = document.getElementById('price-sig').value;
+  const pEss  = document.getElementById('price-ess').value;
+
+  const params = new URLSearchParams({ names, date, p_leg:pLeg, p_sig:pSig, p_ess:pEss });
+  if (venue) params.set('venue', venue);
+
+  const customizeOn = document.getElementById('b-toggle').checked;
+  if (customizeOn) {
+    params.set('pkg', selectedRec);
+    const addons = [];
+    document.querySelectorAll('.b-addon-row').forEach(row => {
+      if (row.querySelector('.b-addon-check').checked) {
+        const price = row.querySelector('.b-addon-price-input').value;
+        const label = row.querySelector('.b-addon-label').textContent;
+        addons.push(encodeURIComponent(label) + ':' + price);
+      }
+    });
+    if (addons.length) params.set('addons', addons.join('|'));
+  }
+
+  window.open('favor3dpro-quote-gemini.html?' + params.toString(), '_blank');
+}
+</script>
+</body>
+</html>

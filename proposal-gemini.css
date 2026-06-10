@@ -359,7 +359,7 @@
   .panel{overflow:hidden;height:auto;min-height:unset;}
 
   /* ── COVER ── */
-  .panel-cover{height:78vh;min-height:480px;overflow:hidden;}
+  .panel-cover{height:65vh;min-height:400px;overflow:hidden;}
   .cover-photo{
     background-size:cover;
     background-repeat:no-repeat;
@@ -377,17 +377,18 @@
   }
   .cover-inner{
     width:75%;height:100%;
-    padding:9% 0 9% 7%;
+    padding:8% 0 8% 7%;
+    justify-content:flex-start;
   }
   .cover-logo{margin-top:0;}
   .cover-logo-name{font-size:.75em;}
   .cover-logo-sub{font-size:.42em;}
-  .cover-mid{padding:6% 0 0;}
+  .cover-mid{padding:5% 0 0;}
   .cover-eyebrow{font-size:2.2em;}
   .cover-proposal{font-size:3.4em;}
   .cover-divider{width:3em;margin-bottom:.6em;}
   .cover-tagline{font-size:.48em;line-height:1.8;}
-  .cover-bottom{bottom:7%;left:7%;width:60%;}
+  .cover-bottom{position:relative;bottom:auto;left:auto;width:auto;margin-top:5%;}
   .cover-prep{font-size:.36em;}
   .cover-names{font-size:1.4em;}
   .cover-date{font-size:.38em;}

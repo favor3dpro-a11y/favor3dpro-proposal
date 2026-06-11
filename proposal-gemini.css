@@ -658,6 +658,7 @@
     width:100vw;max-width:100vw;
     margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
     min-height:max(680px,100vh);height:auto;overflow:hidden;position:relative;
+    --cover-img-x:34%;
     --cover-img-y:30%;
   }
   .cover-inner::after{display:none;}

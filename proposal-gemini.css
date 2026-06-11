@@ -660,15 +660,14 @@
     min-height:max(680px,100vh);height:auto;overflow:hidden;position:relative;
     --cover-img-y:30%;
   }
-  .cover-inner::after{height:clamp(160px,22vh,260px);}
+  .cover-inner::after{display:none;}
   .cover-scrim{
     background:linear-gradient(
-      to right,
-      rgba(0,0,0,.88) 0%,
-      rgba(0,0,0,.80) 40%,
-      rgba(0,0,0,.55) 65%,
-      rgba(0,0,0,.25) 85%,
-      transparent 100%
+      180deg,
+      rgba(0,0,0,.72) 0%,
+      rgba(0,0,0,.45) 42%,
+      rgba(0,0,0,.45) 58%,
+      rgba(0,0,0,.72) 100%
     );
   }
   .cover-inner{
@@ -693,27 +692,36 @@
   .cover-logo-name{font-size:10px;letter-spacing:.32em;}
   .cover-logo-sub{font-size:8px;letter-spacing:.28em;}
   .panel-cover{
-    --cover-gutter:clamp(52px,14vw,108px);
-    --cover-shift-x:clamp(24px,5vw,48px);
-    --cover-title-top:clamp(200px,28vh,340px);
+    --cover-gutter:0;
+    --cover-shift-x:0;
+    --cover-title-top:0;
   }
   .cover-stage{
     grid-row:2;align-self:stretch;
-    grid-template-columns:var(--cover-gutter) minmax(0,1fr) 0;
-    grid-template-rows:auto minmax(16px,3vh) auto 1fr;
-    padding:0;
+    display:flex;flex-direction:column;
+    justify-content:center;align-items:center;
+    padding:0 8% clamp(16px,3vh,28px);
+    min-height:0;
   }
-  .cover-mid{grid-column:2;grid-row:1;max-width:100%;}
-  .cover-eyebrow{font-size:2.4rem;}
+  .cover-mid{
+    width:100%;max-width:100%;
+    margin:0;padding:0;
+    display:flex;flex-direction:column;align-items:center;
+    text-align:center;
+  }
+  .cover-title-group{width:100%;text-align:center;}
+  .cover-eyebrow{font-size:2.4rem;white-space:normal;}
   .cover-proposal{font-size:3.4rem;margin-bottom:.4em;}
-  .cover-divider{width:48px;margin-bottom:clamp(22px,3vh,32px);}
-  .cover-tagline{font-size:10px;line-height:1.75;}
+  .cover-divider{
+    width:48px;margin-left:auto;margin-right:auto;
+    margin-bottom:clamp(18px,2.5vh,28px);
+  }
+  .cover-tagline{font-size:10px;line-height:1.75;text-align:center;}
   .cover-bottom{
-    grid-column:2;grid-row:3;align-self:start;
-    display:flex;flex-direction:column;align-items:flex-start;gap:0;
-    max-width:100%;
-    padding-bottom:clamp(8px,2vh,24px);
-    margin-top:0;
+    display:flex;flex-direction:column;align-items:center;
+    text-align:center;gap:0;
+    width:100%;max-width:100%;
+    margin:clamp(20px,4vh,36px) 0 0;padding:0;
     --gap-above-names:4px;
     --gap-below-names:12px;
   }

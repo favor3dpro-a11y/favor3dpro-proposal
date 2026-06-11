@@ -408,9 +408,9 @@
   }
   .cover-mid{padding:0;}
   .cover-eyebrow{font-size:2.2em;}
-  .cover-proposal{font-size:3.4em;}
-  .cover-divider{width:3em;margin-bottom:.6em;}
-  .cover-tagline{font-size:.48em;line-height:1.8;}
+  .cover-proposal{font-size:3.4em;margin-bottom:.55em;}
+  .cover-divider{width:3em;margin-top:.25em;margin-bottom:1.1em;}
+  .cover-tagline{font-size:.55em;line-height:1.85;}
   .cover-bottom{
     position:static;
     width:100%;
@@ -418,7 +418,7 @@
     left:auto;bottom:auto;
   }
   .cover-prep{font-size:.36em;}
-  .cover-names{font-size:1.4em;}
+  .cover-names{font-size:1.4em;margin-bottom:.65em;}
   .cover-date{font-size:.38em;}
   .cover-venue{font-size:.36em;}
 

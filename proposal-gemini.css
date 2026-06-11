@@ -241,7 +241,7 @@
 
 /* PACKAGES */
 .panel-packages{
-  background:var(--cream);padding:1.5% 8% 2%;
+  background:#E8E4DC;padding:1.5% 8% 2%;
   display:flex;flex-direction:column;height:100%;
 }
 .pkg-header{text-align:center;margin-bottom:1.4em;padding-top:.8em;flex-shrink:0;}
@@ -262,10 +262,12 @@
   display:flex;flex-direction:column;
   padding:1.2em 1.0em .8em;position:relative;min-height:0;
   border:1.5px solid rgba(181,154,122,.35);
+  background:#FFFFFF;
+  box-shadow:0 2px 12px rgba(44,36,24,.06);
 }
 .pkg-col.featured{
   border:1.5px solid var(--gold);
-  background:rgba(181,154,122,.04);
+  background:#FFFFFF;
   padding-top:1.2em;
   position:relative;
   box-shadow:0 4px 18px rgba(181,154,122,.22);

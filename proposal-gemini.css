@@ -424,7 +424,7 @@
     gap:.3em;
   }
   .cover-prep{font-size:.52em;margin-bottom:0;}
-  .cover-names{font-size:1.8em;margin-bottom:.35em;}
+  .cover-names{font-size:1.8em;margin:0;line-height:1;}
   .cover-date{font-size:.54em;margin-bottom:0;}
   .cover-venue{font-size:.44em;margin-top:0;}
 

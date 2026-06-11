@@ -466,8 +466,8 @@
   .panel-testimonial .split-photo{
     order:1;
     height:auto;
-    aspect-ratio:3/4;
-    min-height:320px;
+    aspect-ratio:5/6;
+    min-height:300px;
   }
   .panel-testimonial .split-text{
     order:2;

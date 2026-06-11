@@ -20,9 +20,10 @@
 .cover-logo{display:flex;flex-direction:column;align-items:flex-start;gap:.15em;margin-top:3em;}
 .cover-logo-badge{
   border:1px solid var(--cover-gold);
-  width:2.4em;height:1.8em;
+  border-radius:50%;
+  width:2.5em;height:2.5em;
   display:flex;align-items:center;justify-content:center;
-  margin-bottom:.1em;
+  margin-bottom:.35em;
 }
 .cover-logo-f{
   font-family:'Playfair Display',serif;font-style:italic;
@@ -89,8 +90,12 @@
   display:flex;flex-direction:column;justify-content:space-between;
   padding:7% 0 7% 8%;
 }
+.cover-content{
+  flex:1;display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:0;position:relative;
+}
 .cover-mid{
-  flex:1;display:flex;flex-direction:column;justify-content:flex-start;
+  display:flex;flex-direction:column;justify-content:flex-start;
   padding:16% 0 0;
 }
 .cover-title-group{margin-bottom:.1em;}
@@ -362,7 +367,7 @@
   .panel{overflow:hidden;height:auto;min-height:unset;}
 
   /* ── COVER ── */
-  .panel-cover{height:65vh;min-height:400px;overflow:hidden;position:relative;}
+  .panel-cover{height:72vh;min-height:440px;overflow:hidden;position:relative;}
   .cover-photo{
     background-size:cover;
     background-repeat:no-repeat;
@@ -380,19 +385,38 @@
   }
   .cover-inner{
     box-sizing:border-box;
-    width:75%;height:100%;
-    padding:8% 0 8% 7%;
+    width:100%;height:100%;
+    padding:0;
     justify-content:flex-start;
   }
-  .cover-logo{margin-top:0;}
-  .cover-logo-name{font-size:.75em;}
-  .cover-logo-sub{font-size:.42em;}
-  .cover-mid{padding:5% 0 0;}
+  .cover-logo{
+    align-self:center;
+    align-items:center;
+    width:100%;
+    margin-top:6%;
+    text-align:center;
+  }
+  .cover-logo-badge{margin:0 auto .4em;}
+  .cover-logo-name{font-size:.62em;letter-spacing:.32em;}
+  .cover-logo-sub{font-size:.40em;letter-spacing:.28em;}
+  .cover-content{
+    flex:1;
+    justify-content:center;
+    width:78%;
+    padding:0 0 8% 7%;
+    margin-top:2%;
+  }
+  .cover-mid{padding:0;}
   .cover-eyebrow{font-size:2.2em;}
   .cover-proposal{font-size:3.4em;}
   .cover-divider{width:3em;margin-bottom:.6em;}
   .cover-tagline{font-size:.48em;line-height:1.8;}
-  .cover-bottom{position:absolute;bottom:7%;left:7%;width:65%;z-index:3;}
+  .cover-bottom{
+    position:static;
+    width:100%;
+    margin-top:1.1em;
+    left:auto;bottom:auto;
+  }
   .cover-prep{font-size:.36em;}
   .cover-names{font-size:1.4em;}
   .cover-date{font-size:.38em;}

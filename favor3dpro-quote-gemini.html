@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>favor3dpro — Wedding Film Proposal</title>
+<title>Favor3d Productions — Wedding Film Proposal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
-<link rel="stylesheet" href="proposal-gemini.css?v=9"/>
+<link rel="stylesheet" href="proposal-gemini.css?v=10"/>
 <style>
 html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink);}
 .toolbar{
@@ -25,7 +25,7 @@ html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink
 <body>
 
 <div class="toolbar">
-  <h1>favor3dpro · Wedding Film Proposal</h1>
+  <h1>Favor3d Productions · Wedding Film Proposal</h1>
   <button onclick="window.print()">Save as PDF</button>
 </div>
 
@@ -38,23 +38,26 @@ html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink
   <div class="cover-scrim"></div>
   <div class="cover-inner">
     <div class="cover-logo">
-      <div class="cover-logo-name">Favor3dpro</div>
-      <div class="cover-logo-sub">Wedding Films</div>
+      <div class="cover-logo-badge"><span class="cover-logo-f">F</span></div>
+      <div class="cover-logo-name">Favor3d Productions</div>
+      <div class="cover-logo-sub">Cinematic Films</div>
     </div>
-    <div class="cover-mid">
-      <div class="cover-title-group">
-        <div class="cover-eyebrow">Wedding Film</div>
-        <span class="cover-proposal">Proposal</span>
+    <div class="cover-content">
+      <div class="cover-mid">
+        <div class="cover-title-group">
+          <div class="cover-eyebrow">Wedding Film</div>
+          <span class="cover-proposal">Proposal</span>
+        </div>
+        <div class="cover-divider"></div>
+        <div class="cover-tagline">A cinematic legacy<br>of your most<br>priceless moments</div>
       </div>
-      <div class="cover-divider"></div>
-      <div class="cover-tagline">A cinematic legacy<br>of your most<br>priceless moments</div>
+      <div class="cover-bottom">
+        <div class="cover-prep">Prepared For</div>
+        <div class="cover-names" id="p-names">Dee &amp; Kwan</div>
+        <div class="cover-date" id="p-date">November 8, 2026</div>
+        <div class="cover-venue" id="p-venue"></div>
+      </div>
     </div>
-  </div>
-  <div class="cover-bottom">
-    <div class="cover-prep">Prepared For</div>
-    <div class="cover-names" id="p-names">Dee &amp; Kwan</div>
-    <div class="cover-date" id="p-date">November 8, 2026</div>
-    <div class="cover-venue" id="p-venue"></div>
   </div>
 </section>
 
@@ -98,7 +101,7 @@ html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink
     <div class="sec-lbl-left"><span>Kind Words</span></div>
     <div class="testi-body">
       <div class="testi-mark">&ldquo;</div>
-      <p class="testi-quote" id="p-testi">When we watched it for the first time, we both cried. Our film is something we will cherish for the rest of our lives. Favor3dpro captured the emotion, the atmosphere, and every little detail so beautifully.</p>
+      <p class="testi-quote" id="p-testi">When we watched it for the first time, we both cried. Our film is something we will cherish for the rest of our lives. Favor3d Productions captured the emotion, the atmosphere, and every little detail so beautifully.</p>
       <div class="testi-divider"></div>
       <div class="testi-attr" id="p-testi-attr">
         <span class="name">Jordan &amp; Taylor</span>
@@ -106,8 +109,8 @@ html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink
     </div>
     <div class="about-foot">
       <div class="logo-mark">
-        <div class="logo-name">favor3dpro</div>
-        <div class="logo-sub">Wedding Films</div>
+        <div class="logo-name">Favor3d Productions</div>
+        <div class="logo-sub">Cinematic Films</div>
       </div>
     </div>
   </div>
@@ -209,7 +212,7 @@ function initFromParams(){
   }
 
   document.getElementById("p-date").textContent=(q.get("date")||"November 8, 2026").toUpperCase();
-  document.getElementById("p-testi").textContent=q.get("testi")||"When we watched it for the first time, we both cried. Our film is something we will cherish for the rest of our lives. Favor3dpro captured the emotion, the atmosphere, and every little detail so beautifully.";
+  document.getElementById("p-testi").textContent=q.get("testi")||"When we watched it for the first time, we both cried. Our film is something we will cherish for the rest of our lives. Favor3d Productions captured the emotion, the atmosphere, and every little detail so beautifully.";
   const attr=(q.get("attr")||"Jordan & Taylor").split("|");
   document.getElementById("p-testi-attr").innerHTML=`<span class="name">${attr[0]||""}</span>`;
   if(q.get("about")) document.getElementById("p-about").innerHTML=q.get("about").split("|").map(t=>`<p>${t}</p>`).join("");

@@ -424,6 +424,7 @@
   .panel-packages{
     padding:9% 6% 10%;
     height:auto;
+    background:#E8E4DC;
   }
   .pkg-header{
     margin-bottom:1.4em;padding-top:.6em;
@@ -436,10 +437,12 @@
   }
   .pkg-col{
     padding:1.6em 1.3em 1.2em;
-    box-shadow:none;
+    background:#FFFFFF;
+    box-shadow:0 2px 12px rgba(44,36,24,.06);
   }
   .pkg-col.featured{
     padding-top:2em;
+    background:#FFFFFF;
     box-shadow:0 4px 20px rgba(181,154,122,.18);
   }
   .pkg-col-name{font-size:.88em;margin-bottom:.3em;}

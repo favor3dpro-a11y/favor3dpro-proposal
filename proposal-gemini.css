@@ -407,6 +407,7 @@
     width:78%;
     padding:0 0 14vh 7%;
     margin-top:0;
+    transform:translateY(2vh);
   }
   .cover-mid{padding:0;}
   .cover-eyebrow{font-size:2.2em;}

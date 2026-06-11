@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Favor3d Productions — Wedding Film Proposal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
-<link rel="stylesheet" href="proposal-gemini.css?v=27"/>
+<link rel="stylesheet" href="proposal-gemini.css?v=92"/>
 <style>
-html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink);}
+html,body{margin:0;padding:0;width:100%;overflow-x:hidden;background:var(--cream);font-family:'Montserrat',sans-serif;color:var(--ink);}
 .toolbar{
   position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid #ddd;
   padding:14px 32px;display:flex;justify-content:space-between;align-items:center;
@@ -34,7 +34,9 @@ html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink
 <div class="proposal-grid">
 
 <section class="panel panel-cover">
-  <div class="cover-photo" style="background-image:url('assets/photos/cover.png?v=34');"></div>
+  <div class="cover-photo">
+    <img src="assets/photos/hero-couple.png?v=1" alt="" width="1332" height="784" decoding="async"/>
+  </div>
   <div class="cover-scrim"></div>
   <div class="cover-inner">
     <div class="cover-logo">
@@ -42,7 +44,7 @@ html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink
       <div class="cover-logo-name">Favor3d Productions</div>
       <div class="cover-logo-sub">Cinematic Films</div>
     </div>
-    <div class="cover-content">
+    <div class="cover-stage">
       <div class="cover-mid">
         <div class="cover-title-group">
           <div class="cover-eyebrow">Wedding Film</div>
@@ -79,6 +81,12 @@ html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink
         <p class="about-personal"><span id="p-about-names">Dee &amp; Kwan</span>, we would be honored to be part of your story.</p>
       </div>
     </div>
+    <div class="about-foot">
+      <div class="logo-mark">
+        <div class="logo-name">Favor3d Productions</div>
+        <div class="logo-sub">Cinematic Films</div>
+      </div>
+    </div>
   </div>
   <div class="split-photo"><img src="assets/photos/hands.png" alt=""/></div>
 </section>
@@ -96,6 +104,23 @@ html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink
   </div>
 </section>
 
+<section class="panel panel-nextsteps">
+  <div class="nextsteps-inner">
+    <div class="nextsteps-head">
+      <div class="sec-lbl-center"><span>Next Steps</span></div>
+      <h2 class="nextsteps-title">How We Move Forward</h2>
+      <p class="nextsteps-sub">A simple, intentional process designed around you.</p>
+    </div>
+    <div class="nextsteps-cards-wrap">
+      <div class="nextsteps-cards" id="p-nextsteps"></div>
+    </div>
+    <div class="nextsteps-foot">
+      <a class="nextsteps-btn" id="p-reserve-btn" href="mailto:favor3dpro@gmail.com?subject=Reserve%20Our%20Date">Reserve Our Date</a>
+      <p class="reserve-fallback" id="reserve-fallback-next" hidden>If your email app didn&rsquo;t open, email <a id="reserve-fallback-email-next" href="mailto:favor3dpro@gmail.com">favor3dpro@gmail.com</a></p>
+    </div>
+  </div>
+</section>
+
 <section class="panel panel-split panel-testimonial">
   <div class="split-text dark testi-left">
     <div class="sec-lbl-left"><span>Kind Words</span></div>
@@ -107,18 +132,41 @@ html,body{background:#C8C4BC;font-family:'Montserrat',sans-serif;color:var(--ink
         <span class="name">Jordan &amp; Taylor</span>
       </div>
     </div>
-    <div class="about-foot">
-      <div class="logo-mark">
-        <div class="logo-name">Favor3d Productions</div>
-        <div class="logo-sub">Cinematic Films</div>
+    <div class="about-foot testi-foot">
+      <div class="brand-logo">
+        <div class="brand-logo-badge"><span class="brand-logo-f">F</span></div>
+        <div class="brand-logo-name">Favor3d Productions</div>
+        <div class="brand-logo-sub">Cinematic Films</div>
       </div>
     </div>
   </div>
   <div class="split-photo"><img src="assets/photos/testimonial.png" alt=""/></div>
 </section>
 
+<section class="panel panel-cta-footer">
+  <div class="cta-footer-inner">
+    <div class="cta-footer-ornament" aria-hidden="true">
+      <span class="cta-footer-line"></span>
+      <svg class="cta-footer-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20 9.27l-5 3.64L16.18 20 12 16.77 7.82 20 9 12.91l-5-3.64 5.91-.91z"/></svg>
+      <span class="cta-footer-line"></span>
+    </div>
+    <h2 class="cta-footer-title">Ready to Secure Your Date?</h2>
+    <p class="cta-footer-sub">Your story deserves to be told with care and intention. Let's create something timeless together.</p>
+    <a class="cta-footer-btn" id="p-footer-cta-btn" href="mailto:favor3dpro@gmail.com?subject=Reserve%20Our%20Date">Reserve Our Wedding Date</a>
+    <p class="reserve-fallback reserve-fallback--dark" id="reserve-fallback-footer" hidden>If your email app didn&rsquo;t open, email <a id="reserve-fallback-email-footer" href="mailto:favor3dpro@gmail.com">favor3dpro@gmail.com</a></p>
+    <p class="cta-footer-contact">
+      <a id="p-footer-email" href="mailto:favor3dpro@gmail.com">favor3dpro@gmail.com</a>
+      <span class="cta-footer-dot" aria-hidden="true">·</span>
+      <a id="p-footer-phone" href="tel:+14049855793">404-985-5793</a>
+      <span class="cta-footer-dot" aria-hidden="true">·</span>
+      <span>Atlanta, GA</span>
+    </p>
+  </div>
+</section>
+
 </div>
 </div>
+
 </div>
 
 <script>
@@ -167,6 +215,91 @@ const ICONS={
   share:'<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>'
 };
 const f=n=>"$"+Number(n).toLocaleString("en-US");
+const PKG_LABELS={leg:"The Legacy",sig:"The Signature",ess:"The Essential"};
+const DEFAULT_STEPS=[
+  {title:"Reserve Your Date",body:"Sign contract + {retainer_pct}% retainer. Date is yours."},
+  {title:"Pre-Wedding Consultation",body:"60-day-out call to map every moment that matters."},
+  {title:"Final Details",body:"Balance due 2 weeks before. Timeline locked."},
+  {title:"The Big Day & Beyond",body:"We capture. Sneak peek in 2 weeks. Final film in 8–12 weeks."}
+];
+const DEFAULT_RETAINER_PCT=25;
+const DEFAULT_EMAIL="favor3dpro@gmail.com";
+const STEP_ICONS=[
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.2" cy="8.2" r="2.6"/><path d="M4.2 17.2c.6-2.2 2.2-3.4 4-3.4s3.4 1.2 4 3.4"/><circle cx="15.8" cy="9" r="2.4"/><path d="M12.4 17.2c.5-1.8 1.9-2.8 3.4-2.8 1.1 0 2.2.6 2.8 2.8"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="11" width="11" height="8.5" rx="2"/><path d="M8.5 11V8.5a3.5 3.5 0 0 1 7 0V11"/><circle cx="12" cy="14.8" r=".9"/><path d="M12 15.5v2"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="7.5" width="12.5" height="9" rx="1.5"/><path d="M16 10.5l4.5-2.5v9L16 14.5"/><circle cx="9.8" cy="12" r="2.2"/></svg>'
+];
+
+function parseSteps(raw){
+  if(!raw)return null;
+  return raw.split("|").map(part=>{
+    const i=part.indexOf("::");
+    if(i<0)return{title:part.trim(),body:""};
+    return{title:part.slice(0,i).trim(),body:part.slice(i+2).trim()};
+  }).filter(s=>s.title);
+}
+
+function fillStepTemplate(text,ctx){
+  return String(text||"").replace(/\{retainer_pct\}/g,ctx.retainerPct).replace(/\{retainer_amt\}/g,ctx.retainerAmt);
+}
+function escHtml(s){
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function renderNextSteps(steps,ctx){
+  document.getElementById("p-nextsteps").innerHTML=steps.map((s,i)=>`
+    <article class="nextstep-card">
+      <div class="nextstep-badge">${String(i+1).padStart(2,"0")}</div>
+      <div class="nextstep-icon">${STEP_ICONS[i]||STEP_ICONS[0]}</div>
+      <h3 class="nextstep-title">${escHtml(fillStepTemplate(s.title,ctx))}</h3>
+      <p class="nextstep-body">${escHtml(fillStepTemplate(s.body,ctx))}</p>
+    </article>`).join("");
+}
+
+function buildMailto(ctx){
+  const subject=encodeURIComponent("Reserve Our Date — "+ctx.names);
+  const body=encodeURIComponent(
+    "Hi Favor3d Productions,\n\n"+
+    "We would love to reserve our wedding date.\n\n"+
+    "Couple: "+ctx.names+"\n"+
+    "Wedding date: "+ctx.date+"\n"+
+    (ctx.venue?"Venue: "+ctx.venue+"\n":"")+
+    "Package: "+ctx.pkgLabel+" ("+f(ctx.pkgPrice)+")\n"+
+    "Retainer ("+ctx.retainerPct+"%): "+ctx.retainerAmt+"\n\n"+
+    "Phone:\n\n"+
+    "Notes:\n"
+  );
+  return"mailto:"+ctx.email+"?subject="+subject+"&body="+body;
+}
+
+function openReserveLink(e,mailto){
+  if(e) e.preventDefault();
+  if(!mailto || !mailto.startsWith("mailto:")) return false;
+  window.location.href=mailto;
+  document.querySelectorAll(".reserve-fallback").forEach(el=>{el.hidden=false;});
+  return false;
+}
+
+function attachReserveButtons(mailto,email){
+  [
+    {btn:"p-reserve-btn",fallback:"reserve-fallback-email-next"},
+    {btn:"p-footer-cta-btn",fallback:"reserve-fallback-email-footer"}
+  ].forEach(({btn,fallback})=>{
+    const el=document.getElementById(btn);
+    if(!el) return;
+    el.href=mailto;
+    el.setAttribute("aria-label","Reserve your date by email");
+    el.onclick=function(e){return openReserveLink(e,mailto);};
+  });
+  ["reserve-fallback-email-next","reserve-fallback-email-footer"].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){
+      el.href="mailto:"+email;
+      el.textContent=email;
+    }
+  });
+}
 
 function renderPkgs(selected){
   document.getElementById("p-pkgs").innerHTML=PKGS.map(p=>`
@@ -194,6 +327,7 @@ function initFromParams(){
   const q=new URLSearchParams(location.search);
   if(!q.get("admin")) document.querySelector(".toolbar").classList.add("hidden");
   const names=q.get("names")||"Dee & Kwan";
+  const date=q.get("date")||"November 8, 2026";
   document.getElementById("p-names").textContent=names;
   document.getElementById("p-about-names").textContent=names;
   const venue=q.get("venue")||"";
@@ -201,17 +335,19 @@ function initFromParams(){
   if(venue){venueEl.textContent=venue;venueEl.style.display="";}
   else{venueEl.style.display="none";}
   const addonsRaw=q.get("addons")||"";
+  let addonTotal=0;
   if(addonsRaw){
     const items=addonsRaw.split("|").map(a=>{
       const parts=a.split(":");
-      return{label:decodeURIComponent(parts[0]),price:parts[1]?parseInt(parts[1]):0};
+      return{label:decodeURIComponent(parts[0]),price:parts[1]?parseInt(parts[1],10):0};
     });
+    addonTotal=items.reduce((s,i)=>s+i.price,0);
     const listEl=document.getElementById("p-addons-list");
     listEl.innerHTML=items.map(i=>`<div class="pkg-addon-item"><span class="pkg-addon-name">${i.label}</span><span class="pkg-addon-price">+$${i.price.toLocaleString("en-US")}</span></div>`).join("");
     document.getElementById("p-addons").style.display="";
   }
 
-  document.getElementById("p-date").textContent=(q.get("date")||"November 8, 2026").toUpperCase();
+  document.getElementById("p-date").textContent=date.toUpperCase();
   document.getElementById("p-testi").textContent=q.get("testi")||"When we watched it for the first time, we both cried. Our film is something we will cherish for the rest of our lives. Favor3d Productions captured the emotion, the atmosphere, and every little detail so beautifully.";
   const attr=(q.get("attr")||"Jordan & Taylor").split("|");
   document.getElementById("p-testi-attr").innerHTML=`<span class="name">${attr[0]||""}</span>`;
@@ -219,7 +355,32 @@ function initFromParams(){
   if(q.get("p_leg"))PKGS[0].price=+q.get("p_leg");
   if(q.get("p_sig"))PKGS[1].price=+q.get("p_sig");
   if(q.get("p_ess"))PKGS[2].price=+q.get("p_ess");
-  renderPkgs(q.get("pkg")||"sig");
+
+  const pkgId=q.get("pkg")||"sig";
+  renderPkgs(pkgId);
+
+  const retainerPct=Math.max(0,Math.min(100,parseInt(q.get("retainer")||DEFAULT_RETAINER_PCT,10)||DEFAULT_RETAINER_PCT));
+  const pkg=PKGS.find(p=>p.id===pkgId)||PKGS[1];
+  const totalPrice=pkg.price+addonTotal;
+  const retainerAmt=f(Math.round(totalPrice*retainerPct/100));
+  const steps=parseSteps(q.get("steps"))||DEFAULT_STEPS;
+  const email=q.get("email")||DEFAULT_EMAIL;
+  const ctx={
+    names,date,venue,
+    pkgLabel:PKG_LABELS[pkgId]||pkg.label,
+    pkgPrice:totalPrice,
+    retainerPct:String(retainerPct),
+    retainerAmt,
+    email
+  };
+  renderNextSteps(steps,ctx);
+  const mailto=buildMailto(ctx);
+  attachReserveButtons(mailto,email);
+  const footerEmail=document.getElementById("p-footer-email");
+  if(footerEmail){
+    footerEmail.textContent=email;
+    footerEmail.href="mailto:"+email;
+  }
 }
 initFromParams();
 </script>

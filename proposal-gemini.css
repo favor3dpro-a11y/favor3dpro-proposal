@@ -422,9 +422,9 @@
     flex-direction:column;
     gap:.3em;
   }
-  .cover-prep{font-size:.46em;margin-bottom:0;}
+  .cover-prep{font-size:.52em;margin-bottom:0;}
   .cover-names{font-size:1.8em;margin-bottom:.35em;}
-  .cover-date{font-size:.48em;margin-bottom:0;}
+  .cover-date{font-size:.54em;margin-bottom:0;}
   .cover-venue{font-size:.44em;margin-top:0;}
 
   /* ── ABOUT ── */

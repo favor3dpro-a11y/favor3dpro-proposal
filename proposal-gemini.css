@@ -416,11 +416,14 @@
     width:100%;
     margin-top:2em;
     left:auto;bottom:auto;
+    display:flex;
+    flex-direction:column;
+    gap:.3em;
   }
-  .cover-prep{font-size:.46em;}
-  .cover-names{font-size:1.55em;margin-bottom:.65em;}
-  .cover-date{font-size:.48em;}
-  .cover-venue{font-size:.44em;}
+  .cover-prep{font-size:.46em;margin-bottom:0;}
+  .cover-names{font-size:1.55em;margin-bottom:0;}
+  .cover-date{font-size:.48em;margin-bottom:0;}
+  .cover-venue{font-size:.44em;margin-top:0;}
 
   /* ── ABOUT ── */
   .panel-split{grid-template-columns:1fr;height:auto;}

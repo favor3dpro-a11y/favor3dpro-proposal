@@ -410,17 +410,17 @@
   .cover-eyebrow{font-size:2.2em;}
   .cover-proposal{font-size:3.4em;margin-bottom:.55em;}
   .cover-divider{width:3em;margin-top:.25em;margin-bottom:1.1em;}
-  .cover-tagline{font-size:.55em;line-height:1.85;}
+  .cover-tagline{font-size:.72em;line-height:1.85;}
   .cover-bottom{
     position:static;
     width:100%;
     margin-top:2em;
     left:auto;bottom:auto;
   }
-  .cover-prep{font-size:.36em;}
-  .cover-names{font-size:1.4em;margin-bottom:.65em;}
-  .cover-date{font-size:.38em;}
-  .cover-venue{font-size:.36em;}
+  .cover-prep{font-size:.46em;}
+  .cover-names{font-size:1.55em;margin-bottom:.65em;}
+  .cover-date{font-size:.48em;}
+  .cover-venue{font-size:.44em;}
 
   /* ── ABOUT ── */
   .panel-split{grid-template-columns:1fr;height:auto;}

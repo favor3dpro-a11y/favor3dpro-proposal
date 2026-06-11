@@ -463,12 +463,14 @@
   }
   .panel-testimonial .split-photo{
     order:1;
-    height:72vw;min-height:280px;
+    height:auto;
+    aspect-ratio:3/4;
+    min-height:320px;
   }
   .panel-testimonial .split-text{
     order:2;
   }
-  .panel-testimonial .split-photo img{object-position:center 22%;}
+  .panel-testimonial .split-photo img{object-position:center 18%;}
   .split-text.dark{padding:11% 8% 9% 8%;}
   .split-text.testi-left{
     padding:11% 8% 9% 8%;

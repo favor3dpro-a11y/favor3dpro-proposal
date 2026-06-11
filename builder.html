@@ -138,6 +138,43 @@ html,body{background:#E8E4DC;font-family:'Montserrat',sans-serif;color:var(--ink
   transition:background .2s;margin-top:20px;display:block;
 }
 .b-generate:hover{background:var(--ink);}
+
+/* CLIENT LINK RESULT */
+.b-result{
+  display:none;background:var(--cream);border:1px solid var(--border);
+  padding:28px 36px;margin-top:20px;
+}
+.b-result.is-visible{display:block;}
+.b-result-hint{
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:300;
+  color:var(--muted);line-height:1.6;margin-bottom:16px;
+}
+.b-link-row{display:flex;gap:10px;align-items:stretch;}
+.b-link-input{
+  flex:1;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:400;
+  color:var(--ink);background:var(--white);border:1px solid var(--border);
+  padding:12px 14px;outline:none;min-width:0;
+}
+.b-copy-btn{
+  flex-shrink:0;padding:0 22px;background:var(--gold-deep);color:var(--white);
+  border:none;cursor:pointer;font-family:'Montserrat',sans-serif;
+  font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  transition:background .2s;
+}
+.b-copy-btn:hover{background:var(--ink);}
+.b-copy-btn.is-copied{background:#5a7a52;}
+.b-result-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.b-result-btn{
+  padding:12px 20px;background:transparent;color:var(--ink);
+  border:1px solid var(--border);cursor:pointer;font-family:'Montserrat',sans-serif;
+  font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;display:inline-block;transition:border-color .2s,color .2s;
+}
+.b-result-btn:hover{border-color:var(--gold);color:var(--gold-deep);}
+.b-result-note{
+  font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;
+  color:var(--muted);font-style:italic;margin-top:12px;line-height:1.5;
+}
 </style>
 </head>
 <body>
@@ -346,12 +383,36 @@ html,body{background:#E8E4DC;font-family:'Montserrat',sans-serif;color:var(--ink
   </div>
 
   <!-- GENERATE -->
-  <button class="b-generate" onclick="generate()">Generate Proposal</button>
+  <button class="b-generate" onclick="generate()">Generate Client Link</button>
+
+  <div class="b-result" id="b-result">
+    <div class="b-section-lbl"><span>Send to client</span></div>
+    <p class="b-result-hint">Copy this link and send it by text, email, or DM. It opens on any phone or computer — do not send a <code>file://</code> link.</p>
+    <div class="b-link-row">
+      <input class="b-link-input" id="b-client-link" type="text" readonly aria-label="Client proposal link"/>
+      <button class="b-copy-btn" id="b-copy-btn" type="button" onclick="copyClientLink()">Copy link</button>
+    </div>
+    <div class="b-result-actions">
+      <a class="b-result-btn" id="b-preview-link" href="#" target="_blank" rel="noopener">Preview proposal</a>
+      <a class="b-result-btn" id="b-preview-admin-link" href="#" target="_blank" rel="noopener">Preview with PDF</a>
+    </div>
+    <p class="b-result-note" id="b-result-note"></p>
+  </div>
 
 </div>
 
 <script>
+const PROPOSAL_LIVE_BASE = 'https://favor3dpro-a11y.github.io/favor3dpro-proposal/favor3dpro-quote-gemini.html';
+const DEFAULT_STEPS = [
+  {title:'Reserve Your Date',body:'Sign contract + {retainer_pct}% retainer. Date is yours.'},
+  {title:'Pre-Wedding Consultation',body:'60-day-out call to map every moment that matters.'},
+  {title:'Final Details',body:'Balance due 2 weeks before. Timeline locked.'},
+  {title:'The Big Day & Beyond',body:'We capture. Sneak peek in 2 weeks. Final film in 8–12 weeks.'}
+];
+
 let selectedRec = 'leg';
+let lastClientUrl = '';
+let lastPreviewUrl = '';
 
 function toggleCustomize() {
   const cb = document.getElementById('b-toggle');
@@ -373,44 +434,107 @@ function toggleAddon(row) {
   row.classList.toggle('checked', cb.checked);
 }
 
-function generate() {
-  const names = document.getElementById('b-names').value.trim() || 'Dee & Kwan';
-  const date  = document.getElementById('b-date').value.trim()  || 'November 8, 2026';
-  const venue = document.getElementById('b-venue').value.trim();
-  const pLeg  = document.getElementById('price-leg').value;
-  const pSig  = document.getElementById('price-sig').value;
-  const pEss  = document.getElementById('price-ess').value;
-  const retainer = document.getElementById('b-retainer').value || '25';
-  const email = document.getElementById('b-email').value.trim() || 'favor3dpro@gmail.com';
+function getProposalBase(){
+  if(location.protocol==='https:'&&location.hostname.includes('github.io')){
+    return location.origin+location.pathname.replace(/builder\.html$/,'favor3dpro-quote-gemini.html');
+  }
+  return PROPOSAL_LIVE_BASE;
+}
 
-  const params = new URLSearchParams({ names, date, p_leg:pLeg, p_sig:pSig, p_ess:pEss, retainer, email });
+function stepsMatchDefaults(){
+  return [1,2,3,4].every(i=>{
+    const t=document.getElementById('b-s'+i+'t').value.trim();
+    const b=document.getElementById('b-s'+i+'b').value.trim();
+    return t===DEFAULT_STEPS[i-1].title&&b===DEFAULT_STEPS[i-1].body;
+  });
+}
 
-  const steps = [1,2,3,4].map(i=>{
-    const t = document.getElementById('b-s'+i+'t').value.trim();
-    const b = document.getElementById('b-s'+i+'b').value.trim();
-    return t + '::' + b;
-  }).join('|');
-  params.set('steps', steps);
+function buildProposalParams(forClient){
+  const names=document.getElementById('b-names').value.trim()||'Dee & Kwan';
+  const date=document.getElementById('b-date').value.trim()||'November 8, 2026';
+  const venue=document.getElementById('b-venue').value.trim();
+  const pLeg=document.getElementById('price-leg').value;
+  const pSig=document.getElementById('price-sig').value;
+  const pEss=document.getElementById('price-ess').value;
+  const retainer=document.getElementById('b-retainer').value||'25';
+  const email=document.getElementById('b-email').value.trim()||'favor3dpro@gmail.com';
 
-  if (venue) params.set('venue', venue);
+  const params=new URLSearchParams({names,date,p_leg:pLeg,p_sig:pSig,p_ess:pEss,retainer});
+  if(!forClient) params.set('email',email);
+  if(venue) params.set('venue',venue);
 
-  const customizeOn = document.getElementById('b-toggle').checked;
-  if (customizeOn) {
-    params.set('pkg', selectedRec);
-    const addons = [];
-    document.querySelectorAll('.b-addon-row').forEach(row => {
-      if (row.querySelector('.b-addon-check').checked) {
-        const price = row.querySelector('.b-addon-price-input').value;
-        const label = row.querySelector('.b-addon-label').textContent;
-        addons.push(encodeURIComponent(label) + ':' + price);
-      }
-    });
-    if (addons.length) params.set('addons', addons.join('|'));
-  } else {
-    params.set('pkg', 'sig');
+  if(!stepsMatchDefaults()){
+    const steps=[1,2,3,4].map(i=>{
+      const t=document.getElementById('b-s'+i+'t').value.trim();
+      const b=document.getElementById('b-s'+i+'b').value.trim();
+      return t+'::'+b;
+    }).join('|');
+    params.set('steps',steps);
   }
 
-  window.open('favor3dpro-quote-gemini.html?' + params.toString(), '_blank');
+  const customizeOn=document.getElementById('b-toggle').checked;
+  if(customizeOn){
+    params.set('pkg',selectedRec);
+    const addons=[];
+    document.querySelectorAll('.b-addon-row').forEach(row=>{
+      if(row.querySelector('.b-addon-check').checked){
+        const price=row.querySelector('.b-addon-price-input').value;
+        const label=row.querySelector('.b-addon-label').textContent;
+        addons.push(encodeURIComponent(label)+':'+price);
+      }
+    });
+    if(addons.length) params.set('addons',addons.join('|'));
+  }else{
+    params.set('pkg','sig');
+  }
+
+  return params;
+}
+
+function generate(){
+  const base=getProposalBase();
+  const clientParams=buildProposalParams(true);
+  const previewParams=buildProposalParams(false);
+
+  lastClientUrl=base+'?'+clientParams.toString();
+  lastPreviewUrl=base+'?'+previewParams.toString();
+
+  const linkEl=document.getElementById('b-client-link');
+  linkEl.value=lastClientUrl;
+  document.getElementById('b-preview-link').href=lastPreviewUrl;
+  document.getElementById('b-preview-admin-link').href=lastPreviewUrl+'&admin=1';
+
+  const note=document.getElementById('b-result-note');
+  note.textContent=stepsMatchDefaults()
+    ? 'Link uses default Next Steps text (shorter URL).'
+    : 'Custom Next Steps are included because you edited them.';
+
+  const result=document.getElementById('b-result');
+  result.classList.add('is-visible');
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
+
+  const copyBtn=document.getElementById('b-copy-btn');
+  copyBtn.textContent='Copy link';
+  copyBtn.classList.remove('is-copied');
+}
+
+async function copyClientLink(){
+  if(!lastClientUrl) return;
+  const copyBtn=document.getElementById('b-copy-btn');
+  try{
+    await navigator.clipboard.writeText(lastClientUrl);
+  }catch{
+    const linkEl=document.getElementById('b-client-link');
+    linkEl.focus();
+    linkEl.select();
+    document.execCommand('copy');
+  }
+  copyBtn.textContent='Copied';
+  copyBtn.classList.add('is-copied');
+  setTimeout(()=>{
+    copyBtn.textContent='Copy link';
+    copyBtn.classList.remove('is-copied');
+  },2000);
 }
 </script>
 </body>

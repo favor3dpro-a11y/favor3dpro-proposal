@@ -454,6 +454,11 @@
   .pkg-addons{margin-top:.8em;}
 
   /* ── KIND WORDS ── */
+  .panel-testimonial .split-photo{
+    order:-1;
+    height:72vw;min-height:280px;
+  }
+  .panel-testimonial .split-photo img{object-position:center 30%;}
   .split-text.dark{padding:11% 8% 9% 8%;}
   .split-text.testi-left{
     padding:11% 8% 9% 8%;

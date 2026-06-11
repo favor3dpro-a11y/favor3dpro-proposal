@@ -454,9 +454,16 @@
   .pkg-addons{margin-top:.8em;}
 
   /* ── KIND WORDS ── */
+  .panel-testimonial.panel-split{
+    display:flex;
+    flex-direction:column;
+  }
   .panel-testimonial .split-photo{
-    order:-1;
+    order:1;
     height:72vw;min-height:280px;
+  }
+  .panel-testimonial .split-text{
+    order:2;
   }
   .panel-testimonial .split-photo img{object-position:center 30%;}
   .split-text.dark{padding:11% 8% 9% 8%;}

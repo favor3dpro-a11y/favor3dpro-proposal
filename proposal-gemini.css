@@ -771,7 +771,7 @@
     height:165%;
     left:0;
     top:0;
-    transform:translate(-6%,-44%);
+    transform:translate(-6%,-26%);
     min-height:0;
     object-fit:cover;
     object-position:var(--about-img-x) var(--about-img-y);

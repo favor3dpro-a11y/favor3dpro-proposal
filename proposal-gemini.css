@@ -246,7 +246,7 @@
   background:#E8E4DC;
   min-height:720px;
   --about-img-x:22%;
-  --about-img-y:50%;
+  --about-img-y:40%;
 }
 .panel-about-left{
   display:flex;flex-direction:column;justify-content:space-between;
@@ -265,7 +265,7 @@
 .panel-about .split-photo img{
   position:absolute;
   width:138%;height:138%;
-  left:0;top:-5%;
+  left:0;top:-10%;
   object-fit:cover;
   object-position:var(--about-img-x) var(--about-img-y);
 }
@@ -754,7 +754,7 @@
   .about-personal{font-size:.90em;max-width:100%;margin-top:.5em;}
   .panel-about.panel-split{
     --about-img-x:15%;
-    --about-img-y:50%;
+    --about-img-y:40%;
   }
   .panel-about .split-photo{
     position:relative;

@@ -265,7 +265,8 @@
 .panel-about .split-photo img{
   position:absolute;
   width:138%;height:138%;
-  left:0;top:-10%;
+  left:0;top:0;
+  transform:translateY(-18%);
   object-fit:cover;
   object-position:var(--about-img-x) var(--about-img-y);
 }
@@ -771,6 +772,7 @@
     height:100%;
     left:0;
     top:0;
+    transform:none;
     min-height:0;
     object-fit:cover;
     object-position:var(--about-img-x) var(--about-img-y);

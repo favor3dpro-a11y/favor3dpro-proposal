@@ -266,7 +266,7 @@
   position:absolute;
   width:138%;height:138%;
   left:0;top:0;
-  transform:translateY(-24%);
+  transform:translate(-5%,-24%);
   object-fit:cover;
   object-position:var(--about-img-x) var(--about-img-y);
 }

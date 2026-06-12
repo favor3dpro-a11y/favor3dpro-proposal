@@ -755,7 +755,7 @@
   .about-personal{font-size:.90em;max-width:100%;margin-top:.5em;}
   .panel-about.panel-split{
     --about-img-x:22%;
-    --about-img-y:40%;
+    --about-img-y:48%;
   }
   .panel-about .split-photo{
     position:relative;
@@ -771,7 +771,7 @@
     height:165%;
     left:0;
     top:0;
-    transform:translate(-6%,-36%);
+    transform:translate(-6%,-29%);
     min-height:0;
     object-fit:cover;
     object-position:var(--about-img-x) var(--about-img-y);

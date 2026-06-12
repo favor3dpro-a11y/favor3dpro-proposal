@@ -760,7 +760,7 @@
   .panel-about .split-photo{
     position:relative;
     width:100%;
-    aspect-ratio:4/5;
+    aspect-ratio:4/4.2;
     min-height:0;
     max-height:none;
     overflow:hidden;
@@ -771,7 +771,7 @@
     height:138%;
     left:0;
     top:0;
-    transform:translate(-5%,-28%);
+    transform:translate(-5%,-32%);
     min-height:0;
     object-fit:cover;
     object-position:var(--about-img-x) var(--about-img-y);

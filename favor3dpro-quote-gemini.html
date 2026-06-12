@@ -198,7 +198,7 @@ const PKGS=[
   {id:"ess",label:"The Essential",desc:"Your story, beautifully told",featured:false,
    feats:[
      {title:"1 Cinematographer",sub:"Solo cinematic coverage",icon:"cam"},
-     {title:"6-Hour Coverage",sub:"You choose when your day begins",icon:"clock"},
+     {title:"6 Hours Coverage",sub:"You choose when your day begins",icon:"clock"},
      {title:"2–4 Min Highlight Film",sub:"Cinematic color grade",icon:"play"},
      {title:"Private Online Gallery",sub:"Download within 30 days, yours forever",icon:"box"}
    ],
@@ -301,6 +301,21 @@ function attachReserveButtons(mailto,email){
   });
 }
 
+function applyPkgSub(pkg,sub){
+  if(!sub) return;
+  pkg.desc=sub;
+  const parts=sub.split("·").map(s=>s.trim()).filter(Boolean);
+  if(parts.length<2) return;
+  const hoursLine=parts[0];
+  const crewLine=parts[1];
+  pkg.feats.forEach(f=>{
+    if(f.icon==="clock"){
+      f.title=/coverage/i.test(hoursLine)?hoursLine:(hoursLine+" Coverage");
+    }
+    if(f.icon==="cam") f.title=crewLine;
+  });
+}
+
 function renderPkgs(selected){
   document.getElementById("p-pkgs").innerHTML=PKGS.map(p=>`
     <div class="pkg-col${p.featured?" featured":""}${selected===p.id?" selected":""}">
@@ -355,6 +370,9 @@ function initFromParams(){
   if(q.get("p_leg"))PKGS[0].price=+q.get("p_leg");
   if(q.get("p_sig"))PKGS[1].price=+q.get("p_sig");
   if(q.get("p_ess"))PKGS[2].price=+q.get("p_ess");
+  if(q.get("sub_leg")) applyPkgSub(PKGS[0],q.get("sub_leg"));
+  if(q.get("sub_sig")) applyPkgSub(PKGS[1],q.get("sub_sig"));
+  if(q.get("sub_ess")) applyPkgSub(PKGS[2],q.get("sub_ess"));
 
   const pkgId=q.get("pkg")||"sig";
   renderPkgs(pkgId);

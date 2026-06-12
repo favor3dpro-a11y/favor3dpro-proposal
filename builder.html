@@ -69,7 +69,16 @@ html,body{background:#E8E4DC;font-family:'Montserrat',sans-serif;color:var(--ink
 .b-pkg-card{background:var(--white);border:1.5px solid var(--border);padding:24px 20px 20px;position:relative;}
 .b-pkg-card-lbl{font-family:'Montserrat',sans-serif;font-size:7.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
 .b-pkg-card-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:4px;line-height:1.1;}
-.b-pkg-card-sub{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.b-pkg-card-sub{margin-bottom:16px;}
+.b-pkg-sub-input{
+  width:100%;
+  font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  border:none;border-bottom:1px dashed var(--border);
+  background:transparent;outline:none;padding:0 0 4px;
+}
+.b-pkg-sub-input:focus{border-bottom-color:var(--gold);}
+.b-pkg-sub-input::placeholder{color:rgba(107,95,82,.45);}
 .b-pkg-price-row{display:flex;align-items:center;gap:3px;border-top:1px solid var(--border);padding-top:14px;}
 .b-pkg-price-row>span:first-child{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--gold-deep);}
 .b-price-input{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--gold-deep);border:none;border-bottom:1px dashed var(--border);background:transparent;width:90px;outline:none;padding:0 2px;-moz-appearance:textfield;}
@@ -211,12 +220,15 @@ html,body{background:#E8E4DC;font-family:'Montserrat',sans-serif;color:var(--ink
   <!-- PACKAGE PRICING -->
   <div class="b-section">
     <div class="b-section-lbl"><span>Package Pricing</span></div>
+    <p class="b-step-hint" style="margin:-8px 0 18px;">Click price or subtitle to edit. Use format like <strong>6 Hours · 1 Cinematographer</strong>.</p>
     <div class="b-pkg-grid">
 
       <div class="b-pkg-card">
         <div class="b-pkg-card-lbl">Our Finest Work</div>
         <div class="b-pkg-card-name">The Legacy</div>
-        <div class="b-pkg-card-sub">All-Day · 2 Cinematographers</div>
+        <div class="b-pkg-card-sub">
+          <input class="b-pkg-sub-input" id="sub-leg" type="text" value="All-Day · 2 Cinematographers" placeholder="e.g. All-Day · 2 Cinematographers" oninput="syncRecSubs()"/>
+        </div>
         <div class="b-pkg-price-row">
           <span>$</span>
           <input class="b-price-input" id="price-leg" value="3700" type="number"/>
@@ -227,7 +239,9 @@ html,body{background:#E8E4DC;font-family:'Montserrat',sans-serif;color:var(--ink
       <div class="b-pkg-card">
         <div class="b-pkg-card-lbl">Most Requested</div>
         <div class="b-pkg-card-name">The Signature</div>
-        <div class="b-pkg-card-sub">10 Hours · 2 Cinematographers</div>
+        <div class="b-pkg-card-sub">
+          <input class="b-pkg-sub-input" id="sub-sig" type="text" value="10 Hours · 2 Cinematographers" placeholder="e.g. 10 Hours · 2 Cinematographers" oninput="syncRecSubs()"/>
+        </div>
         <div class="b-pkg-price-row">
           <span>$</span>
           <input class="b-price-input" id="price-sig" value="2900" type="number"/>
@@ -238,7 +252,9 @@ html,body{background:#E8E4DC;font-family:'Montserrat',sans-serif;color:var(--ink
       <div class="b-pkg-card">
         <div class="b-pkg-card-lbl">Intimate &amp; Intentional</div>
         <div class="b-pkg-card-name">The Essential</div>
-        <div class="b-pkg-card-sub">6 Hours · 1 Cinematographer</div>
+        <div class="b-pkg-card-sub">
+          <input class="b-pkg-sub-input" id="sub-ess" type="text" value="6 Hours · 1 Cinematographer" placeholder="e.g. 6 Hours · 1 Cinematographer" oninput="syncRecSubs()"/>
+        </div>
         <div class="b-pkg-price-row">
           <span>$</span>
           <input class="b-price-input" id="price-ess" value="2200" type="number"/>
@@ -409,6 +425,11 @@ const DEFAULT_STEPS = [
   {title:'Final Details',body:'Balance due 2 weeks before. Timeline locked.'},
   {title:'The Big Day & Beyond',body:'We capture. Sneak peek in 2 weeks. Final film in 8–12 weeks.'}
 ];
+const DEFAULT_SUBS = {
+  leg:'All-Day · 2 Cinematographers',
+  sig:'10 Hours · 2 Cinematographers',
+  ess:'6 Hours · 1 Cinematographer'
+};
 
 let selectedRec = 'leg';
 let lastClientUrl = '';
@@ -432,6 +453,21 @@ function toggleAddon(row) {
   const cb = row.querySelector('.b-addon-check');
   cb.checked = !cb.checked;
   row.classList.toggle('checked', cb.checked);
+}
+
+function syncRecSubs(){
+  Object.entries({leg:'sub-leg',sig:'sub-sig',ess:'sub-ess'}).forEach(([pkg,id])=>{
+    const input=document.getElementById(id);
+    const rec=document.querySelector('.b-rec-option[data-pkg="'+pkg+'"] .b-rec-option-sub');
+    if(input&&rec) rec.textContent=input.value.trim()||DEFAULT_SUBS[pkg];
+  });
+}
+
+function subsMatchDefaults(){
+  return Object.entries(DEFAULT_SUBS).every(([pkg,id])=>{
+    const el=document.getElementById('sub-'+pkg);
+    return el&&el.value.trim()===DEFAULT_SUBS[pkg];
+  });
 }
 
 function getProposalBase(){
@@ -462,6 +498,12 @@ function buildProposalParams(forClient){
   const params=new URLSearchParams({names,date,p_leg:pLeg,p_sig:pSig,p_ess:pEss,retainer});
   if(!forClient) params.set('email',email);
   if(venue) params.set('venue',venue);
+
+  if(!subsMatchDefaults()){
+    params.set('sub_leg',document.getElementById('sub-leg').value.trim());
+    params.set('sub_sig',document.getElementById('sub-sig').value.trim());
+    params.set('sub_ess',document.getElementById('sub-ess').value.trim());
+  }
 
   if(!stepsMatchDefaults()){
     const steps=[1,2,3,4].map(i=>{
@@ -505,9 +547,12 @@ function generate(){
   document.getElementById('b-preview-admin-link').href=lastPreviewUrl+'&admin=1';
 
   const note=document.getElementById('b-result-note');
-  note.textContent=stepsMatchDefaults()
-    ? 'Link uses default Next Steps text (shorter URL).'
-    : 'Custom Next Steps are included because you edited them.';
+  const notes=[];
+  if(subsMatchDefaults()) notes.push('default package subtitles');
+  else notes.push('custom package subtitles');
+  if(stepsMatchDefaults()) notes.push('default Next Steps');
+  else notes.push('custom Next Steps');
+  note.textContent='Link includes '+notes.join(' and ')+'.';
 
   const result=document.getElementById('b-result');
   result.classList.add('is-visible');
